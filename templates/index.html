@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento Serra Jr. Engenharia - Dia 2.0</title>
+</head>
+
+<style>
+    h1.background{
+	background-size: contain;
+	background-position: left;
+    text-align: left;
+    color: white;
+    margin-left: 20px;
+}
+
+div{
+    width: 400px;
+    height: 350px;
+    background-color: #50C878;
+	background-position: center;
+    text-align: center;
+    color: white;
+    border: 3px solid white;
+    padding: 10px;
+    margin: 50px;
+}
+
+input.button {
+    cursor: pointer;
+    width: 350px;
+    height: 40px;
+    padding: 0.6rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #0E5626;
+    text-align: center;
+    color: white;
+}
+
+input{
+    width: 350px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+</style>    
+
+<script>
+
+function validarSenha(){
+	senha1 = document.f1.senha1.value
+	senha2 = document.f1.senha2.value
+
+	if (senha1 == senha2)
+		alert("SENHAS IGUAIS")
+	else
+		alert("SENHAS DIFERENTES")
+}
+
+</script>
+
+<body>
+    <div>
+        <h1 class="background">Cadastro</h1>
+        <br>
+        <input type="name" placeholder="Nome" size="20">
+        <br>
+        <form action="" name="f1">
+            <input type="password" placeholder="Senha" name="senha1" size="20">
+            <br>
+            <input type="password" placeholder="Confirmar Senha" name="senha2" size="20">
+            <br>
+            <input type="button" class="button" value="Entrar" onclick="validarSenha()">
+        </form>
+    </div>
+</body>
+
+</html>
