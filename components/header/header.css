@@ -1,0 +1,33 @@
+.login-button {
+    color: white;
+    background-color: #171D25;
+    padding: 10px 20px 10px 20px;
+    margin-right: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    transition: background 1s;
+    transition: transform 1s;
+    transform: scale(1.0);
+}
+
+.login-button:hover {
+    background-color: gray;
+    transition: transform 1s;
+    transform: scale(1.2);
+}
+
+.logo {
+    height: 150px;
+}
+
+a {
+    margin: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+}
