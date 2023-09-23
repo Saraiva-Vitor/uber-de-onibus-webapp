@@ -14,3 +14,6 @@ def login(request):
 
 def cadastro(request):
     return render(request, 'cadastro.html')
+
+def home2(request):
+    return render(request, 'home2.html')
