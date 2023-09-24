@@ -1,0 +1,33 @@
+.banner {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: #171D25;
+}
+
+.banner-left {
+    display: flex;
+    width: 50%;
+}
+
+.banner-right {
+    width: 50%;
+    padding: 30px;
+    color: white;
+}
+
+hr {
+    border-top: 1px solid white;
+}
+
+.banner-right-title{
+    text-align: left;
+    text-transform: uppercase;
+    font-family: 'Roboto';
+}
+
+.banner-right-topics{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

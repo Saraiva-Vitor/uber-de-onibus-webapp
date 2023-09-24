@@ -17,3 +17,6 @@ def cadastro(request):
 
 def home2(request):
     return render(request, 'home2.html')
+
+def teste(request):
+    return render(request, 'teste.html')
