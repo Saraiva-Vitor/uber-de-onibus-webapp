@@ -1,6 +1,8 @@
 .banner {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     background-color: #171D25;
 }
@@ -8,26 +10,39 @@
 .banner-left {
     display: flex;
     width: 50%;
+    align-items:center;
+    justify-content: center;
+    margin-top: 60px;
 }
 
 .banner-right {
     width: 50%;
     padding: 30px;
     color: white;
+    margin-right: 50px;
 }
 
 hr {
     border-top: 1px solid white;
 }
 
+h3{
+    font-family: Montserrat;
+}
+
 .banner-right-title{
-    text-align: left;
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 52px;
     text-transform: uppercase;
-    font-family: 'Roboto';
 }
 
 .banner-right-topics{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
+    font-family: Inter;
 }
