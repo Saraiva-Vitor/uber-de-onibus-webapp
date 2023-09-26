@@ -14,7 +14,6 @@ TESTES.py
 *.pyc
 __pycache__/
 local_settings.py
-db.sqlite3
 media
 
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
@@ -76,8 +75,6 @@ coverage.xml
 # Translations
 *.mo
 
-# Django stuff:
-db.sqlite3-journal
 
 # Flask stuff:
 instance/
