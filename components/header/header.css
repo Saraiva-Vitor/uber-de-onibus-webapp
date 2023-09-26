@@ -18,7 +18,7 @@
 }
 
 .logo {
-    height: 150px;
+    height: 80px;
 }
 
 a {
@@ -26,6 +26,7 @@ a {
 }
 
 header {
+    max-height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
