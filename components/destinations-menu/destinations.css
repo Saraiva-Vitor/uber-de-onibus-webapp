@@ -1,0 +1,69 @@
+.menu-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+    top: -50px;
+    height: 120px;
+    border-radius: 8px;
+    background: #FFF;
+    box-shadow: 0px -1px 2px 1px rgba(0, 0, 0, 0.40);
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.input-row{
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+.input-title{
+    font-family: Roboto;
+    color: #424242;
+    margin-bottom: 0;
+    margin-left: 15px;
+}
+
+.input-local-icon{
+    position: relative;
+    top: -35px;
+    left: -120px;
+}
+
+.input-date-icon {
+    position: relative;
+    top: -35px;
+    left: -70px;
+}
+
+.input-holder-local{
+    border-radius: 8px;
+    border: 1px solid #C1C1C1;
+    background: #FFF;
+    height: 45px;
+    width: 275px;
+    color: #FF7F0A;
+}
+
+.input-holder-date {
+    border-radius: 8px;
+    border: 1px solid #C1C1C1;
+    background: #FFF;
+    height: 45px;
+    width: 165px;
+    color: #FF7F0A;
+}
+
+.submit-btn{
+    border-radius: 8px;
+    background: #171D25;
+    color: white;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    height: 45px;
+    width: 70px;
+    transition: background 1s;
+    transition: transform 1s;
+    transform: scale(1.0);
+}
