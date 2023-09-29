@@ -45,6 +45,8 @@
     height: 45px;
     width: 275px;
     color: #FF7F0A;
+    font-family: Montserrat;
+    font-weight: bold;
     text-align: right;
 }
 
@@ -55,6 +57,8 @@
     height: 45px;
     width: 165px;
     color: #FF7F0A;
+    font-family: Montserrat;
+    font-weight: bold;
     text-align: right;
 }
 
