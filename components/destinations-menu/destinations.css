@@ -45,6 +45,7 @@
     height: 45px;
     width: 275px;
     color: #FF7F0A;
+    text-align: right;
 }
 
 .input-holder-date {
@@ -54,6 +55,7 @@
     height: 45px;
     width: 165px;
     color: #FF7F0A;
+    text-align: right;
 }
 
 .submit-btn{
@@ -66,4 +68,17 @@
     transition: background 1s;
     transition: transform 1s;
     transform: scale(1.0);
+}
+
+input[type='date']::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
 }
