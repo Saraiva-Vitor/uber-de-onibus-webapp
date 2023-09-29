@@ -1,11 +1,21 @@
 form {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    background-color: rgb(0, 0, 0, 0.7);
+    padding: 30px 100px 50px 100px;
+    color: white;
+    border-radius: 10px;
+    width: 20%;
 }
 
 a {
     margin: 0;
 }
+
+
 
 .cadastro {
     color: white;
@@ -13,7 +23,7 @@ a {
     text-decoration: none;
 }
 
-cadastro:hover {
+.cadastro:hover {
     color: white;
     text-decoration: underline;
 }
@@ -23,26 +33,44 @@ cadastro:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #171D25;
+    background-color: #FF7F0A;
     color: white;
     padding-bottom: 100px;
     padding-top: 100px;
 }
 
-.form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(0, 0, 0, 0.7);
-    padding: 30px 100px 50px 100px;
-    color: white;
-    border-radius: 10px;
+.login h1{
+    font-family: Poppins;
+}
+
+.login h4{
+    font-family: Montserrat;
+}
+
+.login a{
+    font-family: Inter;
 }
 
 .entrada {
     border-radius: 10px;
     background-color: transparent;
     color: white;
+    font-family: Montserrat;
+    height: 30px;
+    width: 90%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.entrada::placeholder{
+    font-family: Montserrat;
+    color: white;
+    font-weight: bold;
+}
+
+.input-cadastro-100{
+    width: 100%;
+    height: 30px;
 }
 
 .button {
@@ -56,6 +84,8 @@ cadastro:hover {
     transition: background 1s;
     transition: transform 1s;
     transform: scale(1.0);
+    font-family: Poppins;
+    width: 90%;
 }
 
 .button:hover {

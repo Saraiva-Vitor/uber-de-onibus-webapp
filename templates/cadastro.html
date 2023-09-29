@@ -9,6 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uber de Ônibus - Login</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
     {% component_css_dependencies %}
 </head>
 
@@ -19,15 +22,29 @@
 <body>
     {% component "header" %}
     <div class="login">
-        <h1>Cadastro</h1>
-        <div class="form">
-            <form>
-                <h4>Email</h4><input class="entrada" />
-                <h4>Senha</h4><input class="entrada" />
-                <button class="button">Entrar</button>
-            </form>
-        </div>
+        <h1>Cadastre-se e Viaje com a Uber de Ônibus</h1>
+        <form>
+            <h4>Infome seus dados pessoais</h4>
+            <input class="entrada" placeholder="Nome Completo"/>
+            <input class="entrada" placeholder="CPF"/>
+            <input class="entrada" placeholder="Email"/>
+            <input class="entrada" placeholder="Confirme o Email"/>
+            <input class="entrada" placeholder="Data de Nascimento"/>
+            <input class="entrada" placeholder="Telefone"/>
+            <input class="entrada" type="password" placeholder="Senha"/>
+            <input class="entrada" type="password" placeholder="Confirme a Senha"/>
+            <h4>Informações Opcionais</h4>
+            <input class="entrada" placeholder="CEP"/>
+            <input class="entrada" placeholder="Endereço"/>
+            <input class="entrada" placeholder="Número"/>
+            <input class="entrada" placeholder="Complemento"/>
+            <input class="entrada" placeholder="Bairro"/>
+            <input class="entrada" placeholder="Cidade"/>
+            <input class="entrada" placeholder="Estado"/>
+            <button class="button">Entrar</button>
+        </form>
     </div>
+    {% component "footer" %}
 </body>
 
 </html>

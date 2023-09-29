@@ -9,6 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uber de Ônibus - Login</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
     {% component_css_dependencies %}
 </head>
 
@@ -20,15 +23,14 @@
     {% component "header" %}
     <div class="login">
         <h1>Acesse sua conta</h1>
-        <div class="form">
-            <form>
-                <h4>Email</h4><input class="entrada" />
-                <h4>Senha</h4><input class="entrada" />
-                <button class="button">Entrar</button>
-                <a href="/cadastro" class="cadastro">Não possui conta? Clique aqui!</a>
-            </form>
-        </div>
+        <form>
+            <input class="entrada" placeholder="CPF ou Email"/>
+            <input class="entrada" type="password" placeholder="Senha"/>
+            <button class="button">Entrar</button>
+            <a href="/cadastro" class="cadastro">Não possui conta? Clique aqui!</a>
+        </form>
     </div>
+    {% component "footer" %}
 </body>
 
 </html>
