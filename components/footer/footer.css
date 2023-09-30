@@ -10,6 +10,10 @@ hr {
     width: 98%;
 }
 
+div{
+    margin-right: 30px;
+}
+
 .logo-footer{
     height: 100px;
     width: 100px;
@@ -28,7 +32,7 @@ hr {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     margin: 20px;
     font-family: Poppins;
 }
