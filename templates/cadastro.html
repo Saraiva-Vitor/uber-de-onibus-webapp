@@ -21,27 +21,39 @@
 
 <body>
     {% component "header" %}
-    <div class="login">
+    <div class="register">
         <h1>Cadastre-se e Viaje com a Uber de Ônibus</h1>
         <form>
             <h4>Infome seus dados pessoais</h4>
-            <input class="entrada" placeholder="Nome Completo"/>
-            <input class="entrada" placeholder="CPF"/>
-            <input class="entrada" placeholder="Email"/>
-            <input class="entrada" placeholder="Confirme o Email"/>
-            <input class="entrada" placeholder="Data de Nascimento"/>
-            <input class="entrada" placeholder="Telefone"/>
-            <input class="entrada" type="password" placeholder="Senha"/>
-            <input class="entrada" type="password" placeholder="Confirme a Senha"/>
+            <div class="register-input-div">
+                <input class="register-input" placeholder="Nome Completo"/>
+            </div>
+            <div class="register-input-div">
+                <input class="register-input" placeholder="CPF"/>
+                <input class="register-input" placeholder="Telefone"/>
+                <input class="register-input" placeholder="Data de Nascimento"/>
+            </div>
+            <div class="register-input-div">
+                <input class="register-input" placeholder="Email"/>
+                <input class="register-input" placeholder="Confirme o Email"/>
+            </div>
+            <div class="register-input-div">
+                <input class="register-input" type="password" placeholder="Senha"/>
+                <input class="register-input" type="password" placeholder="Confirme a Senha"/>
+            </div>
             <h4>Informações Opcionais</h4>
-            <input class="entrada" placeholder="CEP"/>
-            <input class="entrada" placeholder="Endereço"/>
-            <input class="entrada" placeholder="Número"/>
-            <input class="entrada" placeholder="Complemento"/>
-            <input class="entrada" placeholder="Bairro"/>
-            <input class="entrada" placeholder="Cidade"/>
-            <input class="entrada" placeholder="Estado"/>
-            <button class="button">Entrar</button>
+            <div class="register-input-div">
+                <input class="register-input" placeholder="Endereço"/>
+                <input class="register-input" placeholder="Número"/>
+                <input class="register-input" placeholder="Complemento"/>
+            </div>
+            <div class="register-input-div">
+                <input class="register-input" placeholder="CEP"/>
+                <input class="register-input" placeholder="Bairro"/>
+                <input class="register-input" placeholder="Cidade"/>
+                <input class="register-input" placeholder="Estado"/>
+            </div>
+            <button class="button">Confirmar</button>
         </form>
     </div>
     {% component "footer" %}
