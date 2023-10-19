@@ -1,18 +1,6 @@
 from django.contrib import admin
 
-from uberdeonibusapp.models import Person, Course, Grade
+from .models import Location, BusRoute
 
-
-@admin.register(Person)
-class PersonAdmin(admin.ModelAdmin):
-    pass
-
-
-@admin.register(Course)
-class CourseAdmin(admin.ModelAdmin):
-    pass
-
-
-@admin.register(Grade)
-class GradeAdmin(admin.ModelAdmin):
-    pass
+admin.site.register(Location)
+admin.site.register(BusRoute)
