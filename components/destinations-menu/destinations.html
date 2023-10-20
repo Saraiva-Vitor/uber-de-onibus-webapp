@@ -1,27 +1,27 @@
 {% load static %}
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 <div class="container container-destination">
     <div class="row">
         <div class="three columns">
             <h4 class="input-title">Saindo de:</h4>
-            <input class="input-holder-local"
-                   type="search">
+            <input class="input-holder-local" type="search"><img class="input-local-icon" src="{% static 'assets/local-icon.svg' %}" height="25px">
+        </div>
+        <div class="one columns">
+            <a onclick=""><img src="{% static 'assets/icon-1.svg' %}" height="40px"></a>
         </div>
         <div class="three columns">
             <h4 class="input-title">Indo para:</h4>
-            <input class="input-holder-local"
-                   type="search">
+            <input class="input-holder-local" type="search"><img class="input-local-icon" src="{% static 'assets/local-icon.svg' %}" height="25px">
         </div>
         <div class="two columns">
             <h4 class="input-title">Data de ida:</h4>
-            <input class="input-holder-local"
-                   type="search">
+            <input class="input-holder-date" type="search"><img class="input-date-icon" src="{% static 'assets/calendar-icon.svg' %}" height="25px">
         </div>
         <div class="two columns">
             <h4 class="input-title">Data de volta:</h4>
-            <input class="input-holder-local"
-                   type="search">
+            <input class="input-holder-date" type="search"><img class="input-date-icon" src="{% static 'assets/calendar-icon.svg' %}" height="25px">
         </div>
-        <div class="two columns">
+        <div class="one columns">
             <button class="submit-btn"><img src="{% static 'assets/magnifier-white-icon.svg' %}"></button>
         </div>
     </div>
