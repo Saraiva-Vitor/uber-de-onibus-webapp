@@ -18,6 +18,7 @@ span {
 .u-full-width {
   background-color: #171d25;
   padding: 20px 20px 0 20px;
+  padding-bottom: 50px;
 }
 @media (min-width: 750px) {
   .img-div {
