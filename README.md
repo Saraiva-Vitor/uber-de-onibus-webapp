@@ -1,4 +1,4 @@
-# uber-de-onibus-webapp
+# Necessário para rodar o projeto:
 
 * Instalar bibliotecas (com o terminal na raiz do projeto onde se enconta o arquivo requirements.txt)
 ```
@@ -9,3 +9,22 @@ pip install -r requirements.txt
 ```
 python manage.py runserver
 ```
+
+
+# Páginas/Rotas
+
+* /
+  
+HomePage
+
+* /admin
+  
+Página de Administrador
+
+* /login
+  
+Página de Login
+
+* /cadastro
+  
+Página de Cadastro
