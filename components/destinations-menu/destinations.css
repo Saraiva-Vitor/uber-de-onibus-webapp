@@ -6,10 +6,17 @@
     background: #FFF;
     box-shadow: 0px -1px 2px 1px rgba(0, 0, 0, 0.40);
 }
-.input-holder-local, .submit-btn{
+.input-holder-local{
     width: 100%;
     height: 44px !important;
     margin-bottom: 0px;
+    color: #FF7F0A;
+    font-family: Montserrat;
+    font-weight: bold;
+    text-align: right;
+    border-radius: 8px;
+    border: 1px solid #C1C1C1;
+    background: #FFF;
 }
 
 
@@ -27,11 +34,45 @@
     background: #171D25;
     color: white;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    height: 45px;
-    width: 70px;
+    width: 100%;
+    height: 44px !important;
     transition: background 1s;
     transition: transform 1s;
     transform: scale(1.0);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+    cursor: pointer;
+}
+
+.submit-btn:img {
+    top: 0;
+}
+
+.input-local-icon {
+    position: relative;
+    top: -35px;
+    left: 10px;
+}
+
+.input-date-icon {
+    position: relative;
+    top: -35px;
+    left: 10px;
+}
+
+.input-holder-date {
+    border-radius: 8px;
+    border: 1px solid #C1C1C1;
+    background: #FFF;
+    height: 44px !important;
+    width: 100%;
+    color: #FF7F0A;
+    font-family: Montserrat;
+    font-weight: bold;
+    text-align: right;
+    margin-bottom: 0px;
 }
 
 input[type='date']::-webkit-calendar-picker-indicator {
