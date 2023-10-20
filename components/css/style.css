@@ -1,3 +1,7 @@
+body{
+    margin: 0;
+}
+
 .login form {
     display: flex;
     flex-direction: column;
@@ -169,5 +173,5 @@ a {
 }
 
 .register-input::placeholder{
-    color: #FF7F0A;
+    color: #171D25;
 }
