@@ -1,20 +1,25 @@
 {% load static %}
-<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-<link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
-<div class="banner">
-    <div class="banner-left">
-        <img src="{% static 'assets/tienzinho-banner.png' %}">
-    </div>
-    <div class="banner-right">
-        <h1 class="banner-right-title">Viagens de ônibus mais baratas que a passagem da rodoviária</h1>
-        <h3>Reserva fácil, com segurança e preço justo</h3>
-        <hr/>
-        <div class="banner-right-topics">
-            <img src="{% static 'assets/magnifier-orange-icon.svg' %}"><h4>Escolha a melhor data</h4>
-            <img src="{% static 'assets/card-icon.svg' %}"><h4>Parcele em até 12x</h4>
-            <img src="{% static 'assets/security-icon.svg' %}"><h4>Compra 100% segura</h4>
+<link rel="stylesheet"
+      href="{% static 'banner.css' %}">
+<div class="u-full-width">
+    <div class="container ">
+        <div class="row">
+            <div class="one-half column img-div">
+                <img id="img-banner" src="{% static 'assets/tienzinho-banner.png' %}">
+            </div>
+            <div class="one-half column">
+                <h3 >Viagens de ônibus mais baratas que a passagem da rodoviária</h3>
+                <h3 class="banner-sub-title">Reserva fácil, com segurança e preço justo</h3>
+                <div class="banner-right-topics">
+                    <img src="{% static 'assets/magnifier-orange-icon.svg' %}">
+                    <span>Escolha a melhor data</span>
+                    <img src="{% static 'assets/card-icon.svg' %}">
+                    <span>Parcele em até 12x</span>
+                    <img src="{% static 'assets/security-icon.svg' %}">
+                    <span>Compra 100% segura</span>
+                </div>
+            </div>
         </div>
-        </div>
     </div>
+
 </div>
