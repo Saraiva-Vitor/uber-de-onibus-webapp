@@ -6,8 +6,7 @@ def home(request):
     locations = Location.objects.all()
     routes = BusRoute.objects.all()
     selected_destination = None
-
-    if request.method == 'POST':
+    if request.method == 'GET':
         selected_origin_id = request.POST.get('origin')
         selected_destination_id = request.POST.get('destination')
 
@@ -16,7 +15,9 @@ def home(request):
             selected_destination = Location.objects.get(
                 id=selected_destination_id)
 
-    return render(request, 'home.html', {'routes': routes, 'locations': locations, 'selected_destination': selected_destination})
+    destinations = BusRoute.objects.filter(origin_id=selected_origin_id)
+
+    return render(request, 'home.html', {'destinations': destinations, 'routes': routes, 'locations': locations, 'selected_destination': selected_destination})
 
 
 def login(request):

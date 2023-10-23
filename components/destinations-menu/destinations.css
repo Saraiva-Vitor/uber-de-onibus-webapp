@@ -44,6 +44,12 @@
     cursor: pointer;
 }
 
+.submit-btn-img{
+    position: relative;
+    top: -3px;
+    left: -2px;
+}
+
 /* .input-local-icon-1 {
     position: absolute;
     top: 55px;
@@ -91,3 +97,4 @@ input[type='date']::-webkit-calendar-picker-indicator {
 input[type='date']::-webkit-datetime-edit {
     font-size: 12px;
 }
+

@@ -4,12 +4,12 @@
 <div class="container container-destination">
     <div class="row">
         <div class="three columns">
-            <form method="post">
+            <form method="get">
             {% csrf_token %}
             <h4 class="input-title">Saindo de:</h4>
             <!-- <img class="input-local-icon-1" src="{% static 'assets/local-icon.svg' %}" height="25px"> -->
-            <select id="origin" name="origin" class="input-holder-local" onchange="this.form.submit()">
-                <option value="">Selecione um local de origem</option>
+            <select id="origin" name="origin" class="input-holder-local">
+                <option value=""></option>
                 {% for location in locations %}
                     <option value="{{ location.id }}">{{ location.name }}</option>
                 {% endfor %}
@@ -23,25 +23,25 @@
             <h4 class="input-title">Indo para:</h4>
             <!-- <img class="input-local-icon-2" src="{% static 'assets/local-icon.svg' %}" height="25px"> -->
             <select id="destination" name="destination" class="input-holder-local">
-                <option value="">Selecione um local de origem primeiro</option>
-                {% for route in routes %}
-                    <option value="{{ route.destination.id }}">{{ route.destination.name }}</option>
+                <option value=""></option>
+                {% for location in locations %}
+                    <option value="{{ location.id }}">{{ location.name }}</option>
                 {% endfor %}
             </select>
         </div>
         <div class="two columns">
             <h4 class="input-title">Data de ida:</h4>
-            <input class="input-holder-date" type="date">
+            <input id="departure" name="departure" class="input-holder-date" type="date">
             <!-- <img class="input-date-icon" src="{% static 'assets/calendar-icon.svg' %}" height="25px"> -->
         </div>
         <div class="two columns">
             <h4 class="input-title">Data de volta:</h4>
-            <input class="input-holder-date" type="date">
+            <input id="return" name="return" class="input-holder-date" type="date">
             <!-- <img class="input-date-icon" src="{% static 'assets/calendar-icon.svg' %}" height="25px"> -->
         </div>
         <div class="one columns">
             <br>
-            <a class="submit-btn" onclick=""><img src="{% static 'assets/magnifier-white-icon.svg' %}"></a>
+            <button type="submit" class="submit-btn" onclick=""><img class="submit-btn-img" src="{% static 'assets/magnifier-white-icon.svg' %}"></button>
         </div>
         </form>
     </div>
