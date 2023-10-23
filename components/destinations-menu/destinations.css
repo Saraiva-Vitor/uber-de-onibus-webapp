@@ -12,7 +12,7 @@
     color: #FF7F0A;
     font-family: Montserrat;
     font-weight: bold;
-    text-align: right;
+    text-align: left;
     border-radius: 8px;
     border: 1px solid #C1C1C1;
     background: #FFF;
@@ -44,17 +44,23 @@
     cursor: pointer;
 }
 
-.input-local-icon {
-    position: relative;
-    top: -35px;
-    left: 10px;
+/* .input-local-icon-1 {
+    position: absolute;
+    top: 55px;
+    left: 30px;
 }
 
-.input-date-icon {
+.input-local-icon-2 {
+    position: absolute;
+    top: 55px;
+    left: 345px;
+} */
+
+/* .input-date-icon {
     position: relative;
     top: -35px;
     left: 10px;
-}
+} */
 
 .input-holder-date {
     border-radius: 8px;
@@ -66,7 +72,7 @@
     color: #FF7F0A;
     font-family: Montserrat;
     font-weight: bold;
-    text-align: right;
+    text-align: center;
 }
 
 input[type='date']::-webkit-calendar-picker-indicator {
