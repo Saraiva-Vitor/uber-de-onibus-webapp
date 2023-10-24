@@ -1,3 +1,7 @@
+.location-txt{
+    display: flex;
+    margin-left: 50px;
+}
 .container-locations{
     height: 500px;
     width: 100%;
