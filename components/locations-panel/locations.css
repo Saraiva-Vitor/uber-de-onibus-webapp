@@ -1,0 +1,44 @@
+.container-locations{
+    height: 500px;
+    width: 100%;
+    
+}
+.carrossel{
+    height: 360px;
+    width: 680px;
+    overflow: hidden;
+    margin-left: 27%;
+}
+.carrossel .fotos{
+    width: 500%;
+    animation-name: slide;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+}
+.img {
+    height: 360px;
+    width: 680px;
+    object-fit: cover;
+}
+.container-locations h1{
+    color: black;
+}
+@keyframes slide {
+    0%{margin-left:0;}
+    20%{margin-left:0;}
+    25%{margin-left : -100%;}
+    45%{margin-left : -100%;}
+    
+    
+    
+}
+.location-footer{
+    display: flex;
+    width:100%;
+    justify-content: end;
+    margin-left: -50px;
+}
+.location-footer a{
+    color: #0277bd;
+    text-decoration: none;
+}
