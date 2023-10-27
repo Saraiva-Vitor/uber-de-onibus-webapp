@@ -21,6 +21,14 @@
     <div style="background-color: #171D25; padding-top: 100px; margin-bottom: 30px;">
         {% component "destinations-menu" %}
     </div>
+    <div class="container">
+        {% if resutados %}
+            {% for resultado in resutados %}
+                <img src="{% static 'assets/arrow-icon.png' %}" alt="" width="58px">                        
+                <h4 style="color: #171D25;">Ônibus de {{ valor1.name }} para</h4>
+            {% endfor %}
+        {% endif %}
+    </div>
     {% component "footer" %}
 </body>
 </html>
