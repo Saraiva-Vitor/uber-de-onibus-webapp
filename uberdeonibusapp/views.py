@@ -14,3 +14,8 @@ def login(request):
 
 def cadastro(request):
     return render(request, 'cadastro.html')
+
+def pesquisa(request):
+    locations = Location.objects.all()
+    
+    return render(request, 'pesquisa.html', {'locations': locations})
