@@ -17,5 +17,6 @@ def cadastro(request):
 
 def pesquisa(request):
     locations = Location.objects.all()
+    routes = BusRoute.objects.all()
     
-    return render(request, 'pesquisa.html', {'locations': locations})
+    return render(request, 'pesquisa.html', {'routes': routes, 'locations': locations})
