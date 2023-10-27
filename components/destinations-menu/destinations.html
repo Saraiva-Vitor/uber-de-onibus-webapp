@@ -1,6 +1,20 @@
 {% load static %}
 
 <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+<script>
+    function inverter(){
+        var select1 = document.getElementById('origin');
+        var select2 = document.getElementById('destination');
+
+        var option1 = select.options[select1.selectedIndex].value;
+        var option2 = select.options[select2.selectedIndex].value;
+
+        select1.options[select1.selectedIndex].value = option2;
+        select2.options[select2.selectedIndex].value = option1;
+    }
+</script>
+
 <div class="container container-destination">
     <div class="row">
         <div class="three columns">
@@ -15,10 +29,11 @@
                 {% endfor %}
             </select>
         </div>
-        <div class="one columns">
+        <!-- ARRUMAR -->
+        <!-- <div class="one columns">
             <br>
-            <a onclick="" style="cursor: pointer;"><img src="{% static 'assets/icon-1.svg' %}" height="40px"></a>
-        </div>
+            <a onclick=inverter() style="cursor: pointer;"><img src="{% static 'assets/icon-1.svg' %}" height="40px"></a>
+        </div> -->
         <div class="three columns">
             <h4 class="input-title">Indo para:</h4>
             <!-- <img class="input-local-icon-2" src="{% static 'assets/local-icon.svg' %}" height="25px"> -->
