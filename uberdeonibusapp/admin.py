@@ -7,4 +7,5 @@ admin.site.register(Driver)
 admin.site.register(BusType)
 admin.site.register(Bus)
 admin.site.register(Profiles)
-admin.site.register(BusSchedules)
+admin.site.register(BusSchedule)
+

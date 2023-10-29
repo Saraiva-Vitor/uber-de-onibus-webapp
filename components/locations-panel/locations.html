@@ -3,15 +3,15 @@
 <div class="container">
     <h3 style="color: #171D25;">Possíveis destinos</h3>
     <div class="grid-container">
-        {% if locations %}
-            {% for location in locations %}
+        {% if locais %}
+            {% for local in locais %}
                 <div class="grid-item">
-                    {% if location.image %}
-                        <img src="{{ location.image.url }}" alt="{{ location.name }}">
+                    {% if local.image %}
+                        <img src="{{ location.image.url }}" alt="{{ local.name }}">
                     {% else %}
-                        <img src="{% static 'assets/sem-imagem.jpg' %}" alt="{{ location.name }}">
+                        <img src="{% static 'assets/sem-imagem.jpg' %}" alt="{{ local.name }}">
                     {% endif %}
-                    <p>{{ location.name }}</p>
+                    <p>{{ local.name }}</p>
                 </div>
             {% endfor %}
         {% endif %}
