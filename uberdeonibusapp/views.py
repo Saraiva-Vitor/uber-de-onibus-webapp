@@ -2,19 +2,19 @@ from django.shortcuts import render
 from .models import Location, BusRoute
 
 # Create your views here.
-def home(request):
-    locations = Location.objects.all()
-    routes = BusRoute.objects.all()
+# def home(request):
+#     locations = Location.objects.all()
+#     routes = BusRoute.objects.all()
 
-    if request.method == 'POST':
-        valor1 = request.POST.get('origin.id')
-        valor2 = request.POST.get('destination.id')
+#     if request.method == 'POST':
+#         valor1 = request.POST.get('origin.id')
+#         valor2 = request.POST.get('destination.id')
 
-        resultados = BusRoute.objects.filter(origin=valor1, destination=valor2)
+#         resultados = BusRoute.objects.filter(origin=valor1, destination=valor2)
 
-        return render(request, 'pesquisa.html', {'resultados': resultados})
+#         return render(request, 'pesquisa.html', {'resultados': resultados})
 
-    return render(request, 'home.html', {'routes': routes, 'locations': locations})
+#     return render(request, 'home.html', {'routes': routes, 'locations': locations})
 
 
 def login(request):
@@ -23,8 +23,26 @@ def login(request):
 def cadastro(request):
     return render(request, 'cadastro.html')
 
-def pesquisa(request):
-    locations = Location.objects.all()
-    routes = BusRoute.objects.all()
+# def pesquisa(request):
+#     locations = Location.objects.all()
+#     routes = BusRoute.objects.all()
     
-    return render(request, 'pesquisa.html', {'routes': routes, 'locations': locations})
+#     return render(request, 'pesquisa.html', {'routes': routes, 'locations': locations})
+
+
+def home(request):
+    locais = Location.objects.all()
+    return render(request, 'home.html', {'locais': locais})
+
+def pesquisa(request):
+    if request.method == 'GET':
+        origem_id = request.GET.get('origem')
+        destino_id = request.GET.get('destino')
+        data = request.GET.get('data')
+
+        # Filtrando as rotas com base na origem e no destino selecionados
+        rotas = BusRoute.objects.filter(origin_id=origem_id, destination_id=destino_id)
+
+        # Poderia ser feita uma filtragem adicional para os horários usando a data
+
+        return render(request, 'pesquisa.html', {'rotas': rotas})

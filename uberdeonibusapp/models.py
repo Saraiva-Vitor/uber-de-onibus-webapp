@@ -72,7 +72,17 @@ class BusRoute(models.Model):
     class Meta:
         verbose_name = 'Rota'
         verbose_name_plural = 'Rotas'
+
+class BusSchedule(models.Model):
+    route = models.ForeignKey(BusRoute, on_delete=models.CASCADE)
+    schedule = models.DateTimeField()
+
+    def __str__(self):
+        return f"{self.route.name} - {self.schedule}"
     
+    class Meta:
+        verbose_name = 'Horário'
+        verbose_name_plural = 'Horários'
 
 def valida_cpf(cpf):
     cpf = str(cpf)
