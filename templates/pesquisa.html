@@ -21,18 +21,7 @@
     <div style="background-color: #171D25; padding-top: 100px;">
         {% component "destinations-menu" %}
     </div>
-    <div class="container">
-        {% for rota in rotas %}
-            <img style="position: relative; top: 45px; right: 55px;" src="{% static 'assets/arrow-icon.png' %}" alt="" width="48px">                        
-            <h4 style="color: #171D25; font-size: 20px;">Ônibus de {{ rota.origin }} para {{ rota.destination }}</h4>
-            <h4>Horários:</h4>
-            <ul>
-                {% for horario in rota.busschedule_set.all %}
-                    <li>{{ horario.schedule }}</li>
-                {% endfor %}
-            </ul>
-        {% endfor %}
-    </div>
+    {% component "details-card" %}
     {% component "footer" %}
 </body>
 </html>

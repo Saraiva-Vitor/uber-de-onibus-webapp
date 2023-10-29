@@ -14,6 +14,8 @@ def home(request):
     return render(request, 'home.html', {'locais': locais, 'routes': routes})
 
 def pesquisa(request):
+    locais = Location.objects.all()
+    routes = BusRoute.objects.all()
     if request.method == 'GET':
         origem_id = request.GET.get('origem')
         destino_id = request.GET.get('destino')
@@ -24,4 +26,4 @@ def pesquisa(request):
 
         # Poderia ser feita uma filtragem adicional para os horários usando a data
 
-        return render(request, 'pesquisa.html', {'rotas': rotas})
+        return render(request, 'pesquisa.html', {'rotas': rotas, 'locais': locais, 'routes': routes})

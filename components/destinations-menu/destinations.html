@@ -1,14 +1,34 @@
-<form action="{% url 'pesquisa' %}" method="get">
-    <select name="origem">
-        {% for local in locais %}
-        <option value="{{ local.id }}">{{ local.name }}</option>
-        {% endfor %}
-    </select>
-    <select name="destino">
-        {% for local in locais %}
-        <option value="{{ local.id }}">{{ local.name }}</option>
-        {% endfor %}
-    </select>
-    <input type="date" name="data">
-    <input type="submit" value="Buscar">
-</form>
+{% load static %}
+
+<div class="container container-destination">
+    <div class="row">
+        <form action="{% url 'pesquisa' %}" method="get">
+            <div class="four columns">
+                <h4 class="input-title">Saindo de:</h4>
+                <select name="origem" class="input-holder-local">
+                    <option value="" ></option>
+                    {% for local in locais %}
+                    <option value="{{ local.id }}">{{ local.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="four columns">
+                <h4 class="input-title">Indo para:</h4>
+                <select name="destino" class="input-holder-local">
+                    <option value=""></option>
+                    {% for local in locais %}
+                    <option value="{{ local.id }}">{{ local.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="two columns">
+                <h4 class="input-title">Data:</h4>
+                <input type="date" name="data" class="input-holder-date">
+            </div>
+            <div class="two columns">
+                <br>
+                <input style="background-color: #171D25; color: white;" type="submit" value="Buscar">
+            </div>
+        </form>
+    </div>
+</div>
