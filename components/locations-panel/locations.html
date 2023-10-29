@@ -7,7 +7,7 @@
             {% for local in locais %}
                 <div class="grid-item">
                     {% if local.image %}
-                        <img src="{{ location.image.url }}" alt="{{ local.name }}">
+                        <img src="{{ local.image.url }}" alt="{{ local.name }}">
                     {% else %}
                         <img src="{% static 'assets/sem-imagem.jpg' %}" alt="{{ local.name }}">
                     {% endif %}
