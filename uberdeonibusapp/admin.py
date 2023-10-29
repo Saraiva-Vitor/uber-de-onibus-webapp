@@ -8,3 +8,4 @@ admin.site.register(BusType)
 admin.site.register(Bus)
 admin.site.register(Profiles)
 admin.site.register(BusSchedule)
+
