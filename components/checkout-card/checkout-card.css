@@ -1,0 +1,16 @@
+.checkout-container{
+    background-color: #171D25;
+    padding: 50px;
+    margin-top: 50px;
+    border-radius: 20px;
+}
+
+.checkout-left {
+    position: relative;
+    bottom: 45px;
+    left: 40px;
+}
+
+.checkout-left p {
+    margin: 0;
+}

@@ -11,6 +11,7 @@ urlpatterns = [
     path("cadastro/", views.cadastro, name="cadastro"),
     path("home/", views.home, name="home"),
     path("pesquisa/", views.pesquisa, name="pesquisa"),
+    path("checkout/", views.checkout, name="checkout"),
 ]
 
 if settings.DEBUG:

@@ -8,6 +8,14 @@ def login(request):
 def cadastro(request):
     return render(request, 'cadastro.html')
 
+def checkout(request):
+    if request.method == 'GET':
+        origem = request.GET.get('origem')
+        destino = request.GET.get('destino')
+        horario = request.GET.get('horario')
+
+    return render(request, 'checkout.html', {'origem': origem, 'destino': destino, 'horario': horario})
+
 def home(request):
     locais = Location.objects.all()
     routes = BusRoute.objects.all()

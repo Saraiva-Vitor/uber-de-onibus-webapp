@@ -11,22 +11,22 @@
                 {% endif %}
             </div>
             <div class="four columns">
-            <form action="" method="get">
+            <form action="{% url 'checkout' %}" method="GET">
                 <div class="title-middle-text">
                     <h6>PARTIDA:</h6>
-                    <input type="hidden" value='{{ horario.schedule|time:"H:i" }}'>
+                    <input name="horario" type="hidden" value='{{ horario.schedule|time:"H:i" }}'>
                     <h5>{{ horario.schedule|time:"H:i" }}</h5>
                 </div>
                 <img src="{% static 'assets/circle-icon.png' %}" alt="">
                 <div class="middle-text">
                     <p style="color: white;">ORIGEM:</p>
-                    <input type="hidden" value='{{ rota.origin }}'>
+                    <input name="origem" type="hidden" value='{{ rota.origin }}'>
                     <h6>{{ rota.origin }}</h6>
                 </div>
                 <img src="{% static 'assets/circle-icon.png' %}" alt="">
                 <div class="middle-text">
                     <p style="color: white;">DESTINO:</p>
-                    <input type="hidden" value='{{ rota.destination }}'>
+                    <input name="destino" type="hidden" value='{{ rota.destination }}'>
                     <h6>{{ rota.destination }}</h6>
                 </div>
                 </div>

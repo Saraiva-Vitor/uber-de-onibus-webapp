@@ -1,0 +1,25 @@
+{% load static %}
+
+<div class="container checkout-container">
+    <div class="one-third column">
+        <img src="{% static 'assets/local-icon.svg' %}" alt="" width="30px">
+        <div class="checkout-left">
+            <p style="color: white;">ORIGEM:</p>
+            <h6>{{ origem }}</h6>
+        </div>
+        <img src="{% static 'assets/local-icon.svg' %}" alt="" width="30px">
+        <div class="checkout-left">
+            <p style="color: white;">DESTINO:</p>
+            <h6>{{ destino }}</h6>
+        </div>
+    </div>
+    <div class="one-third column" style="text-align: left;">
+        <h6 style="margin: 0;">PARTIDA:</h6>
+        <h5 style="color: #FF7F0A; position: relative; left: 90px; bottom: 30px;">{{ horario }}</h5>
+    </div>
+    <div class="one-third column" style="text-align: right;">
+        <p style="color: white; position: relative; top: 70px;">POR APENAS</p>
+        <h4 style="color: #FF7F0A; margin: 0; position: relative; right: 100px; top: 40px;">R$</h4>
+        <h4>199,90</h4>
+    </div>
+</div>
