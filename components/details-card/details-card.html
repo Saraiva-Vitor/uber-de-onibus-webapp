@@ -21,12 +21,16 @@
                 <div class="middle-text">
                     <p style="color: white;">ORIGEM:</p>
                     <input name="origem" type="hidden" value='{{ rota.origin }}'>
+                    <input name="origemlat" type="hidden" value='{{ rota.origin.latitude }}'>
+                    <input name="origemlong" type="hidden" value='{{ rota.origin.longitude }}'>
                     <h6>{{ rota.origin }}</h6>
                 </div>
                 <img src="{% static 'assets/circle-icon.png' %}" alt="">
                 <div class="middle-text">
                     <p style="color: white;">DESTINO:</p>
                     <input name="destino" type="hidden" value='{{ rota.destination }}'>
+                    <input name="destinolat" type="hidden" value='{{ rota.destination.latitude }}'>
+                    <input name="destinolong" type="hidden" value='{{ rota.destination.longitude }}'>
                     <h6>{{ rota.destination }}</h6>
                 </div>
                 </div>
