@@ -18,11 +18,6 @@ class Location(models.Model):
         verbose_name = 'Localidade'
         verbose_name_plural = 'Localidades'
 
-# https://www.google.com.br/maps/@-22.2838797,-42.5370439,16z?entry=ttu
-# https://www.google.com.br/maps/@-22.2879963,-42.5354955
-# https://www.google.com.br/maps/dir/-22.2878891,-42.5329371/-22.2835792,-42.5311349/data=!4m2!4m1!3e0?entry=ttu
-
-
 class BusType(models.Model):
     nome_tipo = models.CharField(max_length=100)
     descricao = models.TextField()

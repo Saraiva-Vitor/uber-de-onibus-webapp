@@ -11,14 +11,19 @@ def cadastro(request):
 def checkout(request):
     if request.method == 'GET':
         origem = request.GET.get('origem')
+        origemlat = request.GET.get('origemlat')
+        origemlong = request.GET.get('origemlong')
         destino = request.GET.get('destino')
+        destinolat = request.GET.get('destinolat')
+        destinolong = request.GET.get('destinolong')
         horario = request.GET.get('horario')
 
-    return render(request, 'checkout.html', {'origem': origem, 'destino': destino, 'horario': horario})
+    return render(request, 'checkout.html', {'origem': origem, 'origemlat': origemlat, 'origemlong': origemlong, 'destino': destino, 'destinolat': destinolat, 'destinolong': destinolong, 'horario': horario})
 
 def home(request):
     locais = Location.objects.all()
     routes = BusRoute.objects.all()
+
     return render(request, 'home.html', {'locais': locais, 'routes': routes})
 
 def pesquisa(request):
