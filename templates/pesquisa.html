@@ -1,3 +1,10 @@
+{% if dinamico%}
+                        {% for local in primeiroFiltro %}
+                         <option value="{{ local.destination }}">{{ local.destination }}</option>
+                        {% endfor %}
+                    {%endif%}
+
+{% if not dinamico %}
 <!DOCTYPE html>
 <html lang="en">
 {% load component_tags %}
@@ -25,3 +32,4 @@
     {% component "footer" %}
 </body>
 </html>
+{%endif%}
