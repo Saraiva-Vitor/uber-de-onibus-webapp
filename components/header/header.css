@@ -20,7 +20,7 @@
 }
 
 .logo {
-    height: 80px;
+    height: 56px;
     margin-top: 15px;
     margin-left: 15px;
     margin-bottom: 15px;
@@ -31,7 +31,7 @@ a {
 }
 
 header {
-    max-height: 80px;
+    max-height: 56px;
     display: flex;
     justify-content: space-between;
     align-items: center;
