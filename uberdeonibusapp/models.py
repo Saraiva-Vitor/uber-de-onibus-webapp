@@ -4,8 +4,26 @@ from django.contrib.auth.models import User
 from django.forms import ValidationError
 import re
 
+class State(models.Model):
+    estado = models.CharField(
+        max_length=2,
+        default='RJ',
+        choices=(
+            ('ES', 'Espírito Santo'),
+            ('MG', 'Minas Gerais'),
+            ('RJ', 'Rio de Janeiro'),
+            ('SP', 'São Paulo'),
+        ))
+
+    def __str__(self):
+        return self.estado
+    
+    class Meta:
+        verbose_name = 'Estado'
+        verbose_name_plural = 'Estados'
 
 class Location(models.Model):
+    estado = models.ForeignKey(State, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     latitude = models.DecimalField(max_digits=20, decimal_places=15)
     longitude = models.DecimalField(max_digits=20, decimal_places=15)

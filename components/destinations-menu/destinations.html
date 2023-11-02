@@ -8,7 +8,7 @@
                 <select name="origem" class="input-holder-local">
                     <option value="" ></option>
                     {% for local in locais %}
-                    <option value="{{ local.id }}">{{ local.name }}</option>
+                    <option value="{{ local.id }}">{{ local.name }} - {{ local.estado }}</option>
                     {% endfor %}
                 </select>
             </div>
