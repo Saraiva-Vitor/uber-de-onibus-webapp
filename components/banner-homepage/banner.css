@@ -34,3 +34,7 @@ span {
 .banner-right-topics span{
 margin-right: 10px;
 }
+
+.row-banner{
+  padding: 50px 0px;
+}
