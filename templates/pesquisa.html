@@ -1,6 +1,6 @@
 {% if dinamico%}
                         {% for local in rotas %}
-                         <option value="{{ local.destination.id }}">{{ local.destination }} - {{ local.estado }}</option>
+                         <option value="{{ local.destination.id }}">{{ local.destination }} - {{ local.destination.estado }}</option>
                         {% endfor %}
                     {%endif%}
 
