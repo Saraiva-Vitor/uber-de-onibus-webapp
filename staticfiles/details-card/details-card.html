@@ -1,0 +1,49 @@
+{% load static %}
+
+{% for rota in rotas %}
+    {% for horario in rota.busschedule_set.all %}
+        <div class="container card-container">
+            <div class="three columns">
+                {% if rota.destination.image %}
+                    <img src="{{ rota.destination.image.url }}" alt="{{ rota.destination.name }}" width="200px" height="200px">
+                {% else %}
+                    <img src="{% static 'assets/sem-imagem.jpg' %}" alt="" width="200px" height="200px">
+                {% endif %}
+            </div>
+            <div class="four columns">
+            <form action="{% url 'checkout' %}" method="GET">
+                <div class="title-middle-text">
+                    <h6>PARTIDA:</h6>
+                    <input name="horario" type="hidden" value='{{ horario.schedule|time:"H:i" }}'>
+                    <h5>{{ horario.schedule|time:"H:i" }}</h5>
+                </div>
+                <img src="{% static 'assets/circle-icon.png' %}" alt="">
+                <div class="middle-text">
+                    <p style="color: white;">ORIGEM:</p>
+                    <input name="origem" type="hidden" value='{{ rota.origin }}'>
+                    <input name="origemlat" type="hidden" value='{{ rota.origin.latitude }}'>
+                    <input name="origemlong" type="hidden" value='{{ rota.origin.longitude }}'>
+                    <h6>{{ rota.origin }}</h6>
+                </div>
+                <img src="{% static 'assets/circle-icon.png' %}" alt="">
+                <div class="middle-text">
+                    <p style="color: white;">DESTINO:</p>
+                    <input name="destino" type="hidden" value='{{ rota.destination }}'>
+                    <input name="destinolat" type="hidden" value='{{ rota.destination.latitude }}'>
+                    <input name="destinolong" type="hidden" value='{{ rota.destination.longitude }}'>
+                    <h6>{{ rota.destination }}</h6>
+                </div>
+                </div>
+                <div class="four columns">
+                    <div class="price-section">
+                        <h4 style="color: #FF7F0A;">R$</h4>
+                        <input type="hidden" value=''>
+                        <h4>199,90</h4>
+                        <p>POR APENAS:</p>
+                        <input style="background-color: #FF7F0A;color: white;" type="submit" value="SELECIONAR">
+                    </div>
+                </div>
+            </form>
+        </div>
+    {% endfor %}
+{% endfor %}

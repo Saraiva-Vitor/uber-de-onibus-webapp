@@ -1,0 +1,48 @@
+.card-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #171D25;
+    padding: 30px;
+    margin-bottom: 50px;
+    border-radius: 20px;
+    margin-top: 50px;
+}
+
+.middle-text{
+    position: relative;
+    bottom: 45px;
+    left: 40px;
+}
+
+.middle-text p{
+    margin: 0;
+}
+
+.title-middle-text{
+    display: flex;
+    justify-content: center;
+}
+
+.title-middle-text h5{
+    color: #FF7F0A;
+}
+
+.title-middle-text h6{
+    position: relative;
+    right: 10px;
+    top: 5px;
+}
+
+.price-section{
+    display: flex;
+    justify-content: center;
+}
+
+.price-section p{
+    color: white;
+    margin: 0;
+    position: relative;
+    bottom: 40px;
+    right: 120px;
+}

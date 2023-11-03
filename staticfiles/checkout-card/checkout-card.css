@@ -1,0 +1,18 @@
+.checkout-container{
+    display: flex;
+    align-items: center;
+    background-color: #171D25;
+    padding: 60px;
+    margin-top: 50px;
+    border-radius: 20px;
+}
+
+.checkout-left {
+    position: relative;
+    bottom: 50px;
+    left: 45px;
+}
+
+.checkout-left p {
+    margin: 0;
+}

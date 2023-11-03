@@ -1,0 +1,32 @@
+{% load static %}
+<script src="https://unpkg.com/htmx.org@1.9.6"></script>
+<div class="container container-destination">
+    <div class="row">
+        <form action="{% url 'pesquisa' %}" method="get">
+            <div class="four columns">
+                <h4 class="input-title">Saindo de:</h4>
+                <select name="origem"  hx-get="{%url 'pesquisa' %}" hx-trigger="change" hx-target="#destino" class="input-holder-local">
+                    <option value="" ></option>
+                    {% for local in locais %}
+                    <option value="{{ local.id }}">{{ local.name }} - {{ local.estado }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="four columns">
+                <h4 class="input-title">Indo para:</h4>
+                <select name="destino" id="destino" class="input-holder-local">
+                    <option value="" ></option>
+         
+                </select>
+            </div>
+            <div class="two columns">
+                <h4 class="input-title">Data:</h4>
+                <input type="date" name="data" class="input-holder-date">
+            </div>
+            <div class="two columns">
+                <br>
+                <input style="background-color: #171D25; color: white; width: 100%;padding: 0;" type="submit" value="Buscar">
+            </div>
+        </form>
+    </div>
+</div>

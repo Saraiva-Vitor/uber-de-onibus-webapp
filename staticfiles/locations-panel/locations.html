@@ -1,0 +1,19 @@
+{% load static %}
+
+<div class="container">
+    <h3 style="color: #171D25;">Possíveis destinos</h3>
+    <div class="grid-container">
+        {% if locais %}
+            {% for local in locais %}
+                <div class="grid-item">
+                    {% if local.image %}
+                        <img src="{{ local.image.url }}" alt="{{ local.name }}">
+                    {% else %}
+                        <img src="{% static 'assets/sem-imagem.jpg' %}" alt="{{ local.name }}">
+                    {% endif %}
+                    <p>{{ local.name }}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>

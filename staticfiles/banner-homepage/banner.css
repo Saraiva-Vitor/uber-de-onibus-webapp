@@ -1,0 +1,40 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span {
+  color: white;
+}
+
+.banner-sub-title{
+    font-weight: 100 !important;
+    font-size: 24px;
+    padding-bottom: 10px;
+    border-bottom: solid 1px;
+    margin-bottom: 10px;
+}
+.u-full-width {
+  background-color: #171d25;
+  padding: 20px 20px 0 20px;
+  padding-bottom: 50px;
+}
+@media (min-width: 750px) {
+  .img-div {
+    height: 300px;
+   /* background: blue;*/
+    display: flex;
+  }
+  #img-banner {
+    align-self: flex-end;
+    width: 100%;
+  }
+}
+.banner-right-topics span{
+margin-right: 10px;
+}
+
+.row-banner{
+  padding: 50px 0px;
+}
