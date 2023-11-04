@@ -7,9 +7,8 @@
         <form action="{% url 'checkout' %}" method="GET">
         <div class="one-third column">
             <div class="container">
-                <h6>PARTIDA:</h6>
+                <h6>PARTIDA: <span style="font-size: 24px; color: #FF7F0A;">{{ horario.schedule|time:"H:i" }}</span></h6>
                 <input name="horario" type="hidden" value='{{ horario.schedule|time:"H:i" }}'>
-                <h5>{{ horario.schedule|time:"H:i" }}</h5>
                 {% if rota.destination.image %}
                 <img src="{{ rota.destination.image.url }}" alt="{{ rota.destination.name }}" style="width:100%;">
                 {% else %}
@@ -37,10 +36,9 @@
             </div> -->
             <div class="one-third column">
                 <div class="container">
-                    <h4 style="color: #FF7F0A;">R$</h4>
+                    <p style="color: white;">POR APENAS:</p>
+                    <h4 style="color: #FF7F0A;">R$ <span style="color: white;">199,90</span></h4>
                     <input type="hidden" value=''>
-                    <h4>199,90</h4>
-                    <p>POR APENAS:</p>
                     <input style="background-color: #FF7F0A;color: white;" type="submit" value="SELECIONAR">
                 </div>
             </div>
