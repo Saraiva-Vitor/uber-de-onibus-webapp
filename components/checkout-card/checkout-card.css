@@ -1,18 +1,33 @@
-.checkout-container{
+.card {
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 80%;
+    margin: 30px auto;
     background-color: #171D25;
-    padding: 60px;
-    margin-top: 50px;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
-.checkout-left {
-    position: relative;
-    bottom: 50px;
-    left: 45px;
+.map {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    width: 100%;
+    max-width: 80%;
 }
 
-.checkout-left p {
-    margin: 0;
+.container {
+    padding: 2px 16px;
+}
+
+@media screen and (max-width: 768px) {
+    .card {
+        max-width: 100%;
+    }
+    .map {
+        max-width: 100%;
+    }
 }

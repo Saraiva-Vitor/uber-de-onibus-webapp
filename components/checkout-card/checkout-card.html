@@ -1,29 +1,39 @@
 {% load static %}
 
-<div class="container checkout-container">
-    <div class="one-third column">
+<div class="card">
+    <div class="map">
         <iframe
-            src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d3691.7788545730496!2d-42.53436077470795!3d-22.28636542969663!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d{{ origemlat }}!2d{{ origemlong }}!4m3!3m2!1d{{ destinolat }}!2d{{ destinolong }}!5e0!3m2!1spt-BR!2sbr!4v1698799393925!5m2!1spt-BR!2sbr"
-            width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
+            src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d3691.7788545730496!2d-42.53436077470795!3d-22.28636542969663!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d{{ origemlat }}!2d{{ origemlong }}!4m3!3m2!1d{{ destinolat }}!2d{{ destinolong }}!5e0!3m2!1spt-BR!2sbr"
+            style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
-    <div class="one-third column" style="text-align: left;">
-        <img style="margin-left: 10px;" src="{% static 'assets/local-icon.svg' %}" alt="" width="30px">
-        <div class="checkout-left">
-            <p style="color: white;">ORIGEM:</p>
-            <h6>{{ origem }}</h6>
-        </div>
-        <img style="margin-left: 10px;" src="{% static 'assets/local-icon.svg' %}" alt="" width="30px">
-        <div class="checkout-left">
-            <p style="color: white;">DESTINO:</p>
-            <h6>{{ destino }}</h6>
-        </div>
-    </div>
-    <div class="one-third column" style="text-align: right;">
-        <h6 style="margin: 0; margin-right: 30px;">PARTIDA:</h6>
-        <h5 style="color: #FF7F0A; position: relative; left: 40px; bottom: 30px;">{{ horario }}</h5>
-        <p style="color: white; margin: 0;">POR APENAS</p>
-        <h4 style="color: #FF7F0A; margin: 0; margin-right: 55px;">R$</h4>
-        <h4 style="position: relative; bottom: 40px; left: 40px;">199,90</h4>
+    <div class="container">
+        <form action="{% url 'checkout' %}" method="GET">
+            <div class="one-third column">
+                <div class="container">
+                    <h6>PARTIDA:</h6>
+                    <h5>{{ horario }}</h5>
+                </div>
+            </div>
+            <div class="one-third column">
+                <div class="container">
+                    <p style="color: white;">ORIGEM:</p>
+                    <h6>{{ origem }}</h6>
+                    <h6>{{ rota.origin }}</h6>
+                    <p style="color: white;">DESTINO:</p>
+                    <h6>{{ destino }}</h6>
+                </div>
+            </div>
+            <!-- <div class="three columns">
+                <div class="container">
+                </div>
+            </div> -->
+            <div class="one-third column">
+                <div class="container">
+                    <p style="color: white;">POR APENAS</p>
+                    <h4>R$</h4>
+                    <h4>199,90</h4>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
