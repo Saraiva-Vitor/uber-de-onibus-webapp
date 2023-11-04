@@ -10,8 +10,7 @@
         <form action="{% url 'checkout' %}" method="GET">
             <div class="one-third column">
                 <div class="container">
-                    <h6>PARTIDA:</h6>
-                    <h5>{{ horario }}</h5>
+                    <h6>PARTIDA: <span style="font-size: 24px; color: #FF7F0A;">{{ horario }}</span></h6>
                 </div>
             </div>
             <div class="one-third column">
@@ -30,8 +29,7 @@
             <div class="one-third column">
                 <div class="container">
                     <p style="color: white;">POR APENAS</p>
-                    <h4>R$</h4>
-                    <h4>199,90</h4>
+                    <h4 style="color: #FF7F0A;">R$ <span style="color: white;">199,90</span></h4>
                 </div>
             </div>
         </form>
