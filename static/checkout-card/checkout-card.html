@@ -4,31 +4,27 @@
     <div class="map">
         <iframe
             src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d3691.7788545730496!2d-42.53436077470795!3d-22.28636542969663!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d{{ origemlat }}!2d{{ origemlong }}!4m3!3m2!1d{{ destinolat }}!2d{{ destinolong }}!5e0!3m2!1spt-BR!2sbr"
-            style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            style="width: 100%; border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
     <div class="container">
         <form action="{% url 'checkout' %}" method="GET">
             <div class="one-third column">
-                <div class="container">
+                <div class="container" style="text-align: left;">
                     <h6>PARTIDA: <span style="font-size: 24px; color: #FF7F0A;">{{ horario }}</span></h6>
                 </div>
             </div>
             <div class="one-third column">
-                <div class="container">
-                    <p style="color: white;">ORIGEM:</p>
+                <div class="container" style="text-align: center;">
+                    <h6 style="margin: 0; color: white; border-bottom: 1px solid #FF7F0A;">ORIGEM:</h6>
                     <h6>{{ origem }}</h6>
                     <h6>{{ rota.origin }}</h6>
-                    <p style="color: white;">DESTINO:</p>
+                    <h6 style="margin: 0; color: white; border-bottom: 1px solid #FF7F0A;">DESTINO:</h6>
                     <h6>{{ destino }}</h6>
                 </div>
             </div>
-            <!-- <div class="three columns">
-                <div class="container">
-                </div>
-            </div> -->
             <div class="one-third column">
-                <div class="container">
-                    <p style="color: white;">POR APENAS</p>
+                <div class="container" style="text-align: right;">
+                    <p style="margin: 0; color: white;">POR APENAS</p>
                     <h4 style="color: #FF7F0A;">R$ <span style="color: white;">199,90</span></h4>
                 </div>
             </div>
