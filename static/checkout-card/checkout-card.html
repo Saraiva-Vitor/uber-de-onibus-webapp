@@ -8,6 +8,7 @@
     </div>
     <div class="container">
         <form action="{% url 'checkout' %}" method="GET">
+            {% csrf_token %}
             <div class="one-third column">
                 <div class="container" style="text-align: left;">
                     <h6>PARTIDA: <span style="font-size: 24px; color: #FF7F0A;">{{ horario }}</span></h6>

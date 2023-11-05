@@ -3,6 +3,7 @@
 <div class="container container-destination">
     <div class="row">
         <form action="{% url 'pesquisa' %}" method="get">
+            {% csrf_token %}
             <div class="four columns">
                 <h4 class="input-title">Saindo de:</h4>
                 <select name="origem"  hx-get="{%url 'pesquisa' %}" hx-trigger="change" hx-target="#destino" class="input-holder-local">
