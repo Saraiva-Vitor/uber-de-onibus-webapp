@@ -35,10 +35,12 @@
         border-radius: 10px;
         padding: 30px;
         ">
-            <form>
+            <form method="post">
+                {% csrf_token %}
                 <div class="row">
-                    <input style="
+                    <input name="email" style="
                     text-align: right; 
+                    color: white;
                     background-color: #171d25;
                     padding-left: 30px; 
                     background-image: url('{% static 'assets/user-icon.png' %}'); 
@@ -49,8 +51,9 @@
                     " type="text" placeholder="CPF ou Email"/>
                 </div>
                 <div class="row">
-                    <input style="
+                    <input name="password" style="
                     text-align: right; 
+                    color: white;
                     background-color: #171d25;
                     padding-left: 30px; 
                     background-image: url('{% static 'assets/pwd-icon.png' %}'); 

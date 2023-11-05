@@ -2,6 +2,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.contrib.auth.models import User
 from django.forms import ValidationError
+from django.contrib.auth.models import AbstractUser
 import re
 
 class State(models.Model):
@@ -147,18 +148,20 @@ def valida_cpf(cpf):
     else:
         return False
 
-class Profiles(models.Model):
-    usuario = models.OneToOneField(User, on_delete=models.CASCADE,
-                                   verbose_name='Usuário')
-    idade = models.PositiveIntegerField()
-    data_nascimento = models.DateField()
+
+class CustomUser(AbstractUser):
+    nome = models.CharField(max_length=100)
     cpf = models.CharField(max_length=14)
-    endereco = models.CharField(max_length=50)
-    numero = models.CharField(max_length=5)
-    complemento = models.CharField(max_length=30)
-    bairro = models.CharField(max_length=30)
+    data_nascimento = models.DateField()
+    email = models.EmailField(max_length=100)
+    telefone = models.CharField(max_length=15)
+    senha = models.CharField(max_length=100)
     cep = models.CharField(max_length=9)
-    cidade = models.CharField(max_length=30)
+    endereco = models.CharField(max_length=100)
+    numero = models.CharField(max_length=20)
+    complemento = models.CharField(max_length=50)
+    bairro = models.CharField(max_length=50)
+    cidade = models.CharField(max_length=50)
     estado = models.CharField(
         max_length=2,
         default='RJ',
@@ -201,7 +204,7 @@ class Profiles(models.Model):
 
         cpf_enviado = self.cpf or None
         cpf_salvo = None
-        perfil = Profiles.objects.filter(cpf=cpf_enviado).first()
+        perfil = CustomUser.objects.filter(cpf=cpf_enviado).first()
 
         if perfil:
             cpf_salvo = perfil.cpf
@@ -221,3 +224,6 @@ class Profiles(models.Model):
     class Meta:
         verbose_name = 'Perfil'
         verbose_name_plural = 'Perfis'
+
+CustomUser._meta.get_field('groups').remote_field.related_name = 'customuser_groups'
+CustomUser._meta.get_field('user_permissions').remote_field.related_name = 'customuser_permissions'

@@ -1,12 +1,61 @@
 from django.shortcuts import render
-from .models import Location, BusRoute
+from .models import *
+from django.contrib.auth import get_user_model
+from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_protect
 
 # Create your views here.
-def login(request):
-    return render(request, 'login.html')
-
+@csrf_protect
 def cadastro(request):
+    if request.method == 'POST':
+        nome = request.POST.get('nome')
+        cpf = request.POST.get('cpf')
+        data_nascimento = request.POST.get('data_nascimento')
+        email = request.POST.get('email')
+        confirma_email = request.POST.get('confirma_email')
+        telefone = request.POST.get('telefone')
+        password = request.POST.get('password')
+        confirma_password = request.POST.get('confirma_password')
+        cep = request.POST.get('cep')
+        endereco = request.POST.get('endereco')
+        numero = request.POST.get('numero')
+        complemento = request.POST.get('complemento')
+        estado = request.POST.get('estado')
+        bairro = request.POST.get('bairro')
+        cidade = request.POST.get('cidade')
+
+        if email := confirma_email:
+            if password := confirma_password:
+                CustomUser = get_user_model()
+                try:
+                    user = CustomUser.objects.create_user(username=email, password=password)
+                    user.nome = nome
+                    user.cpf = cpf
+                    user.data_nascimento = data_nascimento
+                    user.telefone = telefone
+                    user.cep = cep
+                    user.endereco = endereco
+                    user.numero = numero
+                    user.complemento = complemento
+                    user.estado = estado
+                    user.bairro = bairro
+                    user.cidade = cidade
+                    user.save()
+                    return redirect('login') 
+                except Exception as e:
+                    return render(request, 'cadastro.html', {'error_message': 'Erro ao criar usuário. Tente novamente.'})
+            else: 
+                return render(request, 'cadastro.html', {'error_message': 'Senhas Não Conferem. Tente novamente.'})
+        else:
+            return render(request, 'cadastro.html', {'error_message': 'Emails Não Conferem. Tente novamente.'})
     return render(request, 'cadastro.html')
+
+def login(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        return redirect('home') 
+    return render(request, 'login.html')
 
 def checkout(request):
     if request.method == 'GET':

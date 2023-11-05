@@ -6,7 +6,7 @@ admin.site.register(BusRoute)
 admin.site.register(Driver)
 admin.site.register(BusType)
 admin.site.register(Bus)
-admin.site.register(Profiles)
+admin.site.register(CustomUser)
 admin.site.register(BusSchedule)
 admin.site.register(State)
 
