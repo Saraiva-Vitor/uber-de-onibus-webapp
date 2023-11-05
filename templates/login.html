@@ -8,7 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uber de Ônibus - Login</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/skeleton.css' %}">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
@@ -22,14 +23,51 @@
 
 <body>
     {% component "header" %}
-    <div class="login">
-        <h1>Acesse sua conta</h1>
-        <form>
-            <img class="user" src="{% static 'assets/user-icon.png' %}" alt=""><input class="entrada" placeholder="CPF ou Email"/>
-            <img class="pwd" src="{% static 'assets/pwd-icon.png' %}" alt=""><input class="entrada" type="password" placeholder="Senha"/>
-            <button class="button">Entrar</button>
-            <a href="/cadastro" class="cadastro">Não possui conta? Clique aqui!</a>
-        </form>
+    <div class="container" style="
+    text-align: center; 
+    margin-top: 50px; 
+    margin-bottom: 50px;
+    max-width: 400px;
+    ">
+        <h3 style="color: #171d25;">Acesse sua conta</h3>
+        <div class="container" style="
+        box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.55);
+        border-radius: 10px;
+        padding: 30px;
+        ">
+            <form>
+                <div class="row">
+                    <input style="
+                    text-align: right; 
+                    background-color: #171d25;
+                    padding-left: 30px; 
+                    background-image: url('{% static 'assets/user-icon.png' %}'); 
+                    background-repeat: no-repeat; 
+                    background-position: left center;
+                    background-size: 40px;
+                    border-radius: 15px;
+                    " type="text" placeholder="CPF ou Email"/>
+                </div>
+                <div class="row">
+                    <input style="
+                    text-align: right; 
+                    background-color: #171d25;
+                    padding-left: 30px; 
+                    background-image: url('{% static 'assets/pwd-icon.png' %}'); 
+                    background-repeat: no-repeat; 
+                    background-position: left center;
+                    background-size: 40px;
+                    border-radius: 15px;
+                    " type="password" placeholder="Senha"/>
+                </div>
+                <div class="row">
+                    <input type="submit" value="Entrar">
+                </div>
+                <div class="row">
+                    <a href="/cadastro" class="cadastro">Não possui conta? Clique aqui!</a>
+                </div>
+            </form>
+        </div>
     </div>
     {% component "footer" %}
 </body>
