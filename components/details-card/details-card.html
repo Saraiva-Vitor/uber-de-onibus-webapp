@@ -5,17 +5,18 @@
 <div class="card">
     <div class="container">
         <form action="{% url 'checkout' %}" method="GET">
-        <div class="one-third column">
-            <div class="container">
-                <h6>PARTIDA: <span style="font-size: 24px; color: #FF7F0A;">{{ horario.schedule|time:"H:i" }}</span></h6>
-                <input name="horario" type="hidden" value='{{ horario.schedule|time:"H:i" }}'>
-                {% if rota.destination.image %}
-                <img src="{{ rota.destination.image.url }}" alt="{{ rota.destination.name }}" style="width:100%;">
-                {% else %}
-                <img src="{% static 'assets/sem-imagem.jpg' %}" alt="" style="width:100%">
-                {% endif %}
+            {% csrf_token %}
+            <div class="one-third column">
+                <div class="container">
+                    <h6>PARTIDA: <span style="font-size: 24px; color: #FF7F0A;">{{ horario.schedule|time:"H:i" }}</span></h6>
+                    <input name="horario" type="hidden" value='{{ horario.schedule|time:"H:i" }}'>
+                    {% if rota.destination.image %}
+                    <img src="{{ rota.destination.image.url }}" alt="{{ rota.destination.name }}" style="width:100%;">
+                    {% else %}
+                    <img src="{% static 'assets/sem-imagem.jpg' %}" alt="" style="width:100%">
+                    {% endif %}
+                </div>
             </div>
-        </div>
             <div class="one-third column">
                 <div class="container">
                     <h6 style="margin: 0; color: white; border-bottom: 1px solid #FF7F0A;">ORIGEM:</h6>
