@@ -180,3 +180,33 @@ a {
 .register-input::placeholder{
     color: #171D25;
 }
+
+.date {
+    border-radius: 8px;
+    border: 1px solid #C1C1C1;
+    background: #FFF;
+    margin-bottom: 0px;
+    height: 44px !important;
+    width: 100%;
+    color: #FF7F0A;
+    font-family: Montserrat;
+    font-weight: bold;
+    text-align: center;
+}
+
+.date input[type='date']::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
+.date input[type='date']::-webkit-datetime-edit {
+    font-size: 12px;
+}
