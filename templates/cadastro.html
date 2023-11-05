@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uber de Ônibus - Cadastro</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/skeleton.css' %}">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
@@ -22,39 +24,70 @@
 
 <body>
     {% component "header" %}
-    <div class="register">
-        <h1>Cadastre-se e Viaje com a Uber de Ônibus</h1>
+    <div class="container" style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
+        <h3 style="color: #171d25;">Cadastre-se e Viaje com a Uber de Ônibus</h3>
         <form>
             <h4>Infome seus dados pessoais</h4>
-            <div class="register-input-div">
-                <input class="register-input" placeholder="Nome Completo"/>
+            <div class="row">
+                <div class="six columns">
+                    <input class="u-full-width" type="text" placeholder="Nome Completo"/>
+                </div>
+                <div class="three columns">
+                    <input class="u-full-width" type="text" placeholder="CPF"/>
+                </div>
+                <div class="three columns">
+                    <input class="u-full-width" type="text" placeholder="Data de Nascimento"/>
+                </div>
             </div>
-            <div class="register-input-div">
-                <input class="register-input" placeholder="CPF"/>
-                <input class="register-input" placeholder="Telefone"/>
-                <input class="register-input" placeholder="Data de Nascimento"/>
+            <div class="row">
+                <div class="one-half column">
+                    <input class="u-full-width" type="email" placeholder="Email"/>
+                </div>
+                <div class="one-half column">
+                    <input class="u-full-width" type="email" placeholder="Confirme o Email"/>
+                </div>
             </div>
-            <div class="register-input-div">
-                <input class="register-input" placeholder="Email"/>
-                <input class="register-input" placeholder="Confirme o Email"/>
+            <div class="row">
+                <div class="four columns">
+                    <input class="u-full-width" type="tel" placeholder="Telefone"/>
+                </div>
+                <div class="four columns">
+                    <input class="u-full-width" type="password" placeholder="Senha"/>
+                </div>
+                <div class="four columns">
+                    <input class="u-full-width" type="password" placeholder="Confirme a Senha"/>
+                </div>
             </div>
-            <div class="register-input-div">
-                <input class="register-input" type="password" placeholder="Senha"/>
-                <input class="register-input" type="password" placeholder="Confirme a Senha"/>
+
+            <h5 style="color: #171d25; margin-top: 10px;">Informações Opcionais</h5>
+            <div class="row">
+                <div class="three columns">
+                    <input class="u-full-width" type="text" placeholder="CEP"/>
+                </div>
+                <div class="nine columns">
+                    <input class="u-full-width" type="text" placeholder="Endereço"/>
+                </div>
             </div>
-            <h4>Informações Opcionais</h4>
-            <div class="register-input-div">
-                <input class="register-input" placeholder="Endereço"/>
-                <input class="register-input" placeholder="Número"/>
-                <input class="register-input" placeholder="Complemento"/>
+            <div class="row">
+                <div class="five columns">
+                    <input class="u-full-width" type="text" placeholder="Número"/>
+                </div>
+                <div class="five columns">
+                    <input class="u-full-width" type="text" placeholder="Complemento"/>
+                </div>
+                <div class="two columns">
+                    <input class="u-full-width" type="text" placeholder="Estado"/>
+                </div>
             </div>
-            <div class="register-input-div">
-                <input class="register-input" placeholder="CEP"/>
-                <input class="register-input" placeholder="Bairro"/>
-                <input class="register-input" placeholder="Cidade"/>
-                <input class="register-input" placeholder="Estado"/>
+            <div class="row">
+                <div class="one-half column">
+                    <input class="u-full-width" type="text" placeholder="Bairro"/>
+                </div>
+                <div class="one-half column">
+                    <input class="u-full-width" type="text" placeholder="Cidade"/>
+                </div>
             </div>
-            <button class="button">Confirmar</button>
+            <input type="submit" value="Confirmar">
         </form>
     </div>
     {% component "footer" %}
