@@ -18,7 +18,6 @@ span {
 .u-full-width {
   background-color: #171d25;
   padding: 20px 20px 0 20px;
-  padding-bottom: 50px;
 }
 @media screen and (max-width: 767px) {
   .img-div {
@@ -29,6 +28,18 @@ span {
   #img-banner {
     align-self: flex-end;
     width: 100%;
+  }
+
+  .banner-right-topics{
+    display: flex;
+    flex-direction: column;
+    align-items: right;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+  .banner-right-topics img{
+    height: 20px;
+    align-items: right;
   }
 }
 .banner-right-topics span{

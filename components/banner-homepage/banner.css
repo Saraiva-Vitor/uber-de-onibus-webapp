@@ -29,6 +29,18 @@ span {
     align-self: flex-end;
     width: 100%;
   }
+
+  .banner-right-topics{
+    display: flex;
+    flex-direction: column;
+    align-items: right;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+  .banner-right-topics img{
+    height: 20px;
+    align-items: right;
+  }
 }
 .banner-right-topics span{
 margin-right: 10px;
