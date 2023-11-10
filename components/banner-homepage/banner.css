@@ -22,7 +22,7 @@ span {
 @media screen and (max-width: 767px) {
   .img-div {
     height: 150px;
-   /* background: blue;*/
+   /* background: red;*/
     display: flex;
   }
   #img-banner {
