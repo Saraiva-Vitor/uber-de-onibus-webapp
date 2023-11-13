@@ -23,9 +23,10 @@ def cadastro(request):
         estado = request.POST.get('estado')
         bairro = request.POST.get('bairro')
         cidade = request.POST.get('cidade')
-
-        if email := confirma_email:
-            if password := confirma_password:
+        email = confirma_email
+        if email:
+            password = confirma_password
+            if password:
                 CustomUser = get_user_model()
                 try:
                     user = CustomUser.objects.create_user(username=email, password=password)
