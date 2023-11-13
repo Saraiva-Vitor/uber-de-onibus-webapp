@@ -21,15 +21,11 @@ span {
 }
 @media screen and (max-width: 767px) {
   .img-div {
-    height: 150px;
-   /* background: blue;*/
-    display: flex;
+ display: none;
   }
-  #img-banner {
-    align-self: flex-end;
-    width: 100%;
-  }
-
+.banner-right{
+  width: 100%;
+}
   .banner-right-topics{
     display: flex;
     flex-direction: column;
