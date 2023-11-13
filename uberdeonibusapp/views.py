@@ -92,6 +92,7 @@ def pesquisa(request):
             rotas =  routes.filter(origin=origem_id)
         else:
             rotas = routes.filter(origin_id=origem_id, destination_id=destino_id)
+ 
 
 
-        return render(request, 'pesquisa.html', {'locais': locais,'rotas':rotas, 'dinamico': dinamico})
+        return render(request, 'pesquisa.html', {'locais': locais,'rotas':rotas, 'dinamico': dinamico,'nome_rota':rotas[0].name})
