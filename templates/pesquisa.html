@@ -37,6 +37,12 @@
     {% component "header" %}
     <div style="background-color: #171d25; padding-top: 100px">
       {% component "destinations-menu" %}
+      <div class="container">
+        <div class="row data-dias-picker" style="background-color: white; border-radius: 10px; padding: 10px;">
+          {{data}}
+    
+        </div>
+      </div>
     </div>
     <div class="container">
       <div class="row">
@@ -47,6 +53,21 @@
       <div class="row">{% component "details-card" %}</div>
     </div>
     {% component "footer" %}
+
+    <script>
+     const diasSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+      const controle = document.getElementsByClassName("data-dias-picker")[0];
+      console.log(controle.innerHTML);
+      const partesData = controle.innerText.split('-');
+     
+      const nomediaAnterior = diasSemana[new Date(partesData[0],partesData[1]- 1,parseInt(partesData[2])-1).getDay()] + ' - '  +[parseInt(partesData[2])-1]  + '/' + partesData[1];
+      const nomedia = diasSemana[new Date(partesData[0], partesData[1] - 1, partesData[2]).getDay()] + ' - ' + partesData[2] + '/' + partesData[1];
+      const nomediaSeguinte = diasSemana[new Date(partesData[0],partesData[1]- 1,parseInt(partesData[2])+1).getDay()]  + ' - '  + [parseInt(partesData[2])+1] + '/' + partesData[1];
+      
+      controle.innerHTML = '<div class="one-third column">' + nomediaAnterior + '</div>'   + '<div class="one-third column">' + nomedia + '</div>' + '<div class="one-third column">' + nomediaSeguinte + '</div>'
+      console.log(nomedia);
+    </script>
+
   </body>
 </html>
 {%endif%}

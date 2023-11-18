@@ -3,6 +3,7 @@ from .models import *
 from django.contrib.auth import get_user_model
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_protect
+from datetime import datetime
 
 # Create your views here.
 @csrf_protect
@@ -92,7 +93,5 @@ def pesquisa(request):
             rotas =  routes.filter(origin=origem_id)
         else:
             rotas = routes.filter(origin_id=origem_id, destination_id=destino_id)
- 
 
-
-        return render(request, 'pesquisa.html', {'locais': locais,'rotas':rotas, 'dinamico': dinamico,'nome_rota':rotas[0].name})
+        return render(request, 'pesquisa.html', {'locais': locais,'rotas':rotas, 'dinamico': dinamico,'nome_rota':rotas[0].name,'data':data})
