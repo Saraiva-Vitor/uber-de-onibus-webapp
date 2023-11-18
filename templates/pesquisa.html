@@ -32,17 +32,39 @@
       href="{% static 'assets/logo-footer.png' %}"
     />
     {% component_css_dependencies %}
+
+    <style>
+      .data-dias-picker{
+        background-color: white; border-radius: 10px; padding: 5px;
+ 
+      }
+      .data-dias-picker div{
+       border-radius: 10px;
+       padding: 5px;
+       text-align: center;
+      }
+      .data-dias-picker div:hover{
+        background-color: #FF7F0A;
+        cursor: pointer;
+      }
+.selected-day{
+  background-color: #FF7F0A;
+  
+}
+    </style>
+    
   </head>
   <body>
     {% component "header" %}
-    <div style="background-color: #171d25; padding-top: 100px">
-      {% component "destinations-menu" %}
-      <div class="container">
-        <div class="row data-dias-picker" style="background-color: white; border-radius: 10px; padding: 10px;">
-          {{data}}
-    
-        </div>
+    <div class="u-full-width " style="background-color: #171d25;padding: 20px;">
+      <div class="row" style="margin-top: 100px;"> {% component "destinations-menu" %}
+
       </div>
+
+        <div class="row data-dias-picker container" >
+          {{data}}
+        </div>
+     
     </div>
     <div class="container">
       <div class="row">
@@ -64,7 +86,7 @@
       const nomedia = diasSemana[new Date(partesData[0], partesData[1] - 1, partesData[2]).getDay()] + ' - ' + partesData[2] + '/' + partesData[1];
       const nomediaSeguinte = diasSemana[new Date(partesData[0],partesData[1]- 1,parseInt(partesData[2])+1).getDay()]  + ' - '  + [parseInt(partesData[2])+1] + '/' + partesData[1];
       
-      controle.innerHTML = '<div class="one-third column">' + nomediaAnterior + '</div>'   + '<div class="one-third column">' + nomedia + '</div>' + '<div class="one-third column">' + nomediaSeguinte + '</div>'
+      controle.innerHTML = '<div class="one-third column">' + nomediaAnterior + '</div>'   + '<div class="one-third column selected-day">' + nomedia + '</div>' + '<div class="one-third column">' + nomediaSeguinte + '</div>'
       console.log(nomedia);
     </script>
 
