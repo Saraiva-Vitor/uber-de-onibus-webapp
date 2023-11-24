@@ -79,6 +79,7 @@ class BusRoute(models.Model):
         Location, on_delete=models.CASCADE, related_name='destination_routes')
     bus = models.ForeignKey(
         Bus, on_delete=models.SET_NULL, null=True, blank=True)
+    preco = models.DecimalField(null=True, blank=True, max_digits=10, decimal_places=2)
 
     def __str__(self):
         return f'{self.name} ({self.origin} to {self.destination})'
