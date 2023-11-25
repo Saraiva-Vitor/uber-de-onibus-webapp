@@ -1,0 +1,28 @@
+.custom-checkbox input[type="checkbox"] {
+    display: none;
+    /* Esconde a checkbox padrão */
+}
+
+.checkbox-label {
+    position: relative;
+    cursor: pointer;
+}
+
+.checked-img,
+.unchecked-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.unchecked-img {
+    z-index: 1;
+}
+
+.custom-checkbox input[type="checkbox"]:checked+.checkbox-label .checked-img {
+    z-index: 1;
+}
+
+.custom-checkbox input[type="checkbox"]:checked+.checkbox-label .unchecked-img {
+    z-index: 0;
+}

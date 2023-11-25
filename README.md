@@ -36,3 +36,7 @@ Página de Resultado da Pesquisa de Rotas
 * /checkout
   
 Página de Descrição do Horário Selecionado da Rota
+
+* /mapa-de-assentos
+  
+Página do Mapa para Seleção do Assento da Rota

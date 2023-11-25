@@ -99,6 +99,20 @@ class BusSchedule(models.Model):
         verbose_name = 'Horário'
         verbose_name_plural = 'Horários'
 
+class Poltrona(models.Model):
+    numero = models.IntegerField(unique=True)
+
+    def __str__(self):
+        return f"Poltrona {self.numero}"
+
+class ListaPoltronas(models.Model):
+    rota = models.ForeignKey(BusRoute, on_delete=models.CASCADE)
+    horario_dia = models.ForeignKey(BusSchedule, on_delete=models.CASCADE)
+    poltronas = models.ManyToManyField(Poltrona)
+
+    def __str__(self):
+        return f"Lista de Poltronas para {self.rota.name} - {self.horario_dia.schedule}"
+
 def valida_cpf(cpf):
     cpf = str(cpf)
     cpf = re.sub(r'[^0-9]', '', cpf)

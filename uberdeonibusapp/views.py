@@ -12,6 +12,25 @@ def logout_view(request):
     logout(request)
     return redirect('home')
 
+def lista_poltronas(request, lista_id):
+    lista_poltronas = ListaPoltronas.objects.get(pk=lista_id)
+
+    context = {
+        'lista_poltronas': lista_poltronas,
+    }
+    return render(request, 'lista_poltronas.html', context)
+
+def selecionar_poltrona(request, lista_id, poltrona_id):
+    lista_poltronas = ListaPoltronas.objects.get(pk=lista_id)
+    poltrona = Poltrona.objects.get(pk=poltrona_id)
+
+    if poltrona in lista_poltronas.poltronas.all():
+        lista_poltronas.poltronas.remove(poltrona)
+    else:
+        lista_poltronas.poltronas.add(poltrona)
+
+    return redirect('lista_poltronas', lista_poltronas.id)
+
 def cadastro(request):
     if request.method == 'POST':
         form = CadastroForm(request.POST)
