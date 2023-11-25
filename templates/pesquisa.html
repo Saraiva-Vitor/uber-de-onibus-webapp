@@ -41,7 +41,7 @@
     <div class="container">
       <div class="row">
         <h6 style="color: #171d25; padding-top: 10px">
-          Ônibus de: {{nome_rota}}
+          <img src="{% static 'assets/arrow-icon.png' %}" alt=" " width="30px" style="position: relative; top: 9px; right: 5px;"/>Ônibus de: <span style="color: #FF7F0A;">{{nome_origem}}</span> Para <span style="color: #FF7F0A;">{{nome_destino}}</span>
         </h6>
       </div>
       <div class="row">{% component "details-card" %}</div>
