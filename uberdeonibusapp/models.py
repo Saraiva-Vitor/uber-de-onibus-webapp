@@ -82,36 +82,11 @@ class BusRoute(models.Model):
     preco = models.DecimalField(null=True, blank=True, max_digits=10, decimal_places=2)
 
     def __str__(self):
-        return f'{self.name} ({self.origin} to {self.destination})'
+        return f'({self.origin} para {self.destination})'
     
     class Meta:
         verbose_name = 'Rota'
         verbose_name_plural = 'Rotas'
-
-class BusSchedule(models.Model):
-    route = models.ForeignKey(BusRoute, on_delete=models.CASCADE)
-    schedule = models.DateTimeField()
-
-    def __str__(self):
-        return f"{self.route.name} - {self.schedule}"
-    
-    class Meta:
-        verbose_name = 'Horário'
-        verbose_name_plural = 'Horários'
-
-class Poltrona(models.Model):
-    numero = models.IntegerField(unique=True)
-
-    def __str__(self):
-        return f"Poltrona {self.numero}"
-
-class ListaPoltronas(models.Model):
-    rota = models.ForeignKey(BusRoute, on_delete=models.CASCADE)
-    horario_dia = models.ForeignKey(BusSchedule, on_delete=models.CASCADE)
-    poltronas = models.ManyToManyField(Poltrona)
-
-    def __str__(self):
-        return f"Lista de Poltronas para {self.rota.name} - {self.horario_dia.schedule}"
 
 def valida_cpf(cpf):
     cpf = str(cpf)
@@ -240,3 +215,27 @@ class CustomUser(AbstractUser):
 
 CustomUser._meta.get_field('groups').remote_field.related_name = 'customuser_groups'
 CustomUser._meta.get_field('user_permissions').remote_field.related_name = 'customuser_permissions'
+
+class Poltrona(models.Model):
+    route = models.ForeignKey(BusRoute, on_delete=models.CASCADE, null=True, blank=True)
+    numero = models.IntegerField(unique=True)
+    passageiro = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True)
+    ocupada = models.BooleanField(("Ocupada"), null=True, blank=True, default=False)
+
+    def __str__(self):
+        return f"Passageiro: {self.passageiro} - Rota: {self.route} - Poltrona: {self.numero}"
+    
+    class Meta:
+        verbose_name = 'Poltrona'
+
+class BusSchedule(models.Model):
+    route = models.ForeignKey(BusRoute, on_delete=models.CASCADE)
+    data = models.DateField(null=True, blank=True)
+    hora = models.TimeField(null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.route.name} - {self.data} - {self.hora}"
+    
+    class Meta:
+        verbose_name = 'Horário'
+        verbose_name_plural = 'Horários'

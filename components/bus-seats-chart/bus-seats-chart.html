@@ -2,23 +2,13 @@
 <!-- style="background-color: #171D25; color: white; border-radius: 15px;" -->
 <div class="container">
     <h1>Lista de Poltronas</h1>
-    <p>Rota: {{ lista_poltronas.rota.nome }} - Horário: {{ lista_poltronas.horario.hora }} - Dia: {{
-        lista_poltronas.dia.nome }}</p>
-    <ul>
-        {% for poltrona in lista_poltronas.poltronas.all %}
-        <li>
-            {{ poltrona }}
-            <form method="post" action="{% url 'selecionar_poltrona' lista_poltronas.id poltrona.id %}">
-                {% csrf_token %}
-                <button type="submit">
-                    {% if poltrona in lista_poltronas.poltronas.all %}
-                    Desselecionar
-                    {% else %}
-                    Selecionar
-                    {% endif %}
-                </button>
-            </form>
-        </li>
-        {% endfor %}
-    </ul>
+    <h1>Detalhes do Horário</h1>
+    <p>Rota: {{ horario.route.name }}</p>
+    <p>Horário: {{ horario.schedule }}</p>
+    
+    <h2>Poltronas</h2>
+    <h5 style="color: #171d25; margin-top: 10px; border-bottom: 3px solid #FF7F0A;">Poltronas</h5>
+    {% for poltrona in poltronas %}
+        <p>Poltrona {{ poltrona.numero }} - {% if poltrona.passageiro %}Ocupada{% else %}Disponível{% endif %}</p>
+    {% endfor %}
 </div>

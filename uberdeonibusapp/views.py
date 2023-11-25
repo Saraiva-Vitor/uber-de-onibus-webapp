@@ -2,7 +2,7 @@ from .models import *
 from django.views.decorators.csrf import csrf_protect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import CadastroForm
 from django.core.management import call_command
 
@@ -12,24 +12,18 @@ def logout_view(request):
     logout(request)
     return redirect('home')
 
-def lista_poltronas(request, lista_id):
-    lista_poltronas = ListaPoltronas.objects.get(pk=lista_id)
+def detalhes_rota(request, rota_id):
+    rota = BusRoute.objects.get(id=rota_id)
+    
+    # Obtém as poltronas vinculadas a esta rota
+    poltronas = Poltrona.objects.filter(route=rota)
 
     context = {
-        'lista_poltronas': lista_poltronas,
+        'rota': rota,
+        'poltronas': poltronas,
     }
-    return render(request, 'lista_poltronas.html', context)
 
-def selecionar_poltrona(request, lista_id, poltrona_id):
-    lista_poltronas = ListaPoltronas.objects.get(pk=lista_id)
-    poltrona = Poltrona.objects.get(pk=poltrona_id)
-
-    if poltrona in lista_poltronas.poltronas.all():
-        lista_poltronas.poltronas.remove(poltrona)
-    else:
-        lista_poltronas.poltronas.add(poltrona)
-
-    return redirect('lista_poltronas', lista_poltronas.id)
+    return render(request, 'mapaAssentos.html', context)
 
 def cadastro(request):
     if request.method == 'POST':
@@ -110,4 +104,4 @@ def pesquisa(request):
  
 
 
-        return render(request, 'pesquisa.html', {'locais': locais,'rotas':rotas, 'dinamico': dinamico,'nome_rota':rotas[0].name})
+        return render(request, 'pesquisa.html', {'locais': locais,'rotas':rotas, 'dinamico': dinamico,'nome_origem':rotas[0].origin.name, 'nome_destino':rotas[0].destination.name})
