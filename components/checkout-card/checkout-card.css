@@ -4,10 +4,13 @@
     justify-content: center;
     flex-direction: column;
     width: 100%;
-    max-width: 80%;
+    max-width: 60%;
     margin: 30px auto;
     background-color: #171D25;
     border-radius: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    max-width: 50%;
 }
 
 .map {
