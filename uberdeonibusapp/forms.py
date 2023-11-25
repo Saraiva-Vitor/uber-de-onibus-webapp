@@ -5,6 +5,7 @@ from datetime import datetime
 import re
 
 class CadastroForm(forms.ModelForm):
+    complemento = forms.CharField(max_length=50, required=False)
     confirma_email = forms.EmailField(label='Confirme o Email', required=True)
     confirma_password = forms.CharField(widget=forms.PasswordInput, label='Confirme a Senha', required=True)
     data_nascimento = forms.DateField(

@@ -149,7 +149,7 @@ class CustomUser(AbstractUser):
     cep = models.CharField(max_length=9)
     endereco = models.CharField(max_length=100)
     numero = models.CharField(max_length=20)
-    complemento = models.CharField(max_length=50)
+    complemento = models.CharField(max_length=50,null=True, blank=True)
     bairro = models.CharField(max_length=50)
     cidade = models.CharField(max_length=50)
     estado = models.CharField(
