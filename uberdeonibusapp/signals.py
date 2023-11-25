@@ -7,11 +7,11 @@ from .models import *
 @receiver(post_save, sender=BusRoute)
 def criar_horarios_poltronas(sender, instance, created, **kwargs):
     if created:
-        for day_offset in range(1, 6):  # Criando horários para os próximos 5 dias
-            for i in range(6, 22):  # Criando 5 horários como exemplo
-                schedule_date = timezone.now() + timedelta(days=day_offset)
-                schedule_time = datetime.combine(schedule_date, datetime.min.time()) + timedelta(hours=i)
-                BusSchedule.objects.create(route=instance, date=schedule_date, time=schedule_time)
+        day_offset = 1 
+        for i in range(6, 22): 
+            schedule_date = timezone.now() + timedelta(days=day_offset)
+            schedule_time = datetime.combine(schedule_date, datetime.min.time()) + timedelta(hours=i)
+            BusSchedule.objects.create(route=instance, data=schedule_date, hora=schedule_time)
 
         # Vincule automaticamente as poltronas
         for numero_poltrona in range(1, 49):  # Vinculando 48 poltronas como exemplo
