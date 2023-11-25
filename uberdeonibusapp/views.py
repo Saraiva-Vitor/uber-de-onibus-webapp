@@ -5,6 +5,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import CadastroForm
 from django.core.management import call_command
+import folium
+from folium import plugins
+from geopy.geocoders import Nominatim
+from geopy.distance import geodesic
 
 # Create your views here.
 @csrf_protect
@@ -77,7 +81,31 @@ def checkout(request):
         destinolong = request.GET.get('destinolong')
         horario = request.GET.get('horario')
 
-    return render(request, 'checkout.html', {'origem': origem, 'origemlat': origemlat, 'origemlong': origemlong, 'destino': destino, 'destinolat': destinolat, 'destinolong': destinolong, 'horario': horario})
+        origemlat = origemlat.replace(',', '.')
+        origemlong = origemlong.replace(',', '.')
+        destinolat = destinolat.replace(',', '.')
+        destinolong = destinolong.replace(',', '.')
+
+    def calcular_centro(coord1, coord2):
+        return ((coord1[0] + coord2[0]) / 2, (coord1[1] + coord2[1]) / 2)
+
+    # Coordenadas para origem e destino (você pode obter essas coordenadas de qualquer maneira que desejar)
+    coordenadas_origem = [float(origemlat), float(origemlong)]
+    coordenadas_destino = [float(destinolat), float(destinolong)]
+
+    # Crie um mapa centrado em uma localização específica
+    mapa = folium.Map(location=coordenadas_origem, zoom_start=5)
+
+    folium.Marker(coordenadas_origem, popup='Origem').add_to(mapa)
+    folium.Marker(coordenadas_destino, popup='Destino').add_to(mapa)
+
+    centro = calcular_centro(coordenadas_origem, coordenadas_destino)
+
+    mapa.location = centro
+
+    mapa_html = mapa._repr_html_()
+
+    return render(request, 'checkout.html', {'mapa_html': mapa_html, 'origem': origem, 'origemlat': origemlat, 'origemlong': origemlong, 'destino': destino, 'destinolat': destinolat, 'destinolong': destinolong, 'horario': horario})
 
 def home(request):
     locais = Location.objects.all()

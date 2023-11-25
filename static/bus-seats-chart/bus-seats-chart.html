@@ -7,9 +7,8 @@
     <p>Horário: {{ horario.schedule }}</p>
     
     <h2>Poltronas</h2>
-    <ul>
-        {% for poltrona in horario.poltronas.all %}
-        <li>Poltrona {{ poltrona.numero }} - {% if poltrona.ocupada %}Ocupada{% else %}Disponível{% endif %}</li>
-        {% endfor %}
-    </ul>
+    <h5 style="color: #171d25; margin-top: 10px; border-bottom: 3px solid #FF7F0A;">Poltronas</h5>
+    {% for poltrona in poltronas %}
+        <p>Poltrona {{ poltrona.numero }} - {% if poltrona.passageiro %}Ocupada{% else %}Disponível{% endif %}</p>
+    {% endfor %}
 </div>

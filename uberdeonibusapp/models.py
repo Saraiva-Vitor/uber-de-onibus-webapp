@@ -218,7 +218,7 @@ CustomUser._meta.get_field('user_permissions').remote_field.related_name = 'cust
 
 class Poltrona(models.Model):
     route = models.ForeignKey(BusRoute, on_delete=models.CASCADE, null=True, blank=True)
-    numero = models.IntegerField(unique=True)
+    numero = models.IntegerField()
     passageiro = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True)
     ocupada = models.BooleanField(("Ocupada"), null=True, blank=True, default=False)
 
