@@ -9,4 +9,3 @@ admin.site.register(Bus)
 admin.site.register(CustomUser)
 admin.site.register(BusSchedule)
 admin.site.register(State)
-

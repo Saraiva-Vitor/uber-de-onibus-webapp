@@ -35,8 +35,11 @@
         border-radius: 10px;
         padding: 30px;
         ">
-            <form method="post">
+            <form method="post" action="{% url 'login' %}">
                 {% csrf_token %}
+                {% if login_failed %}
+                    <p style="color: #171D25;">Digite o email e a senha.</p>
+                 {% endif %}
                 <div class="row">
                     <input name="email" style="
                     text-align: right; 
@@ -48,7 +51,7 @@
                     background-position: left center;
                     background-size: 40px;
                     border-radius: 15px;
-                    " type="text" placeholder="CPF ou Email"/>
+                    " type="text" placeholder="Email"/>
                 </div>
                 <div class="row">
                     <input name="password" style="

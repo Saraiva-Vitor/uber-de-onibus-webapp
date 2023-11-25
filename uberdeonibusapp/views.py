@@ -1,61 +1,57 @@
-from django.shortcuts import render
 from .models import *
-from django.contrib.auth import get_user_model
-from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_protect
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, redirect
+from .forms import CadastroForm
+from django.core.management import call_command
 
 # Create your views here.
 @csrf_protect
+def logout_view(request):
+    logout(request)
+    return redirect('home')
+
 def cadastro(request):
     if request.method == 'POST':
-        nome = request.POST.get('nome')
-        cpf = request.POST.get('cpf')
-        data_nascimento = request.POST.get('data_nascimento')
-        email = request.POST.get('email')
-        confirma_email = request.POST.get('confirma_email')
-        telefone = request.POST.get('telefone')
-        password = request.POST.get('password')
-        confirma_password = request.POST.get('confirma_password')
-        cep = request.POST.get('cep')
-        endereco = request.POST.get('endereco')
-        numero = request.POST.get('numero')
-        complemento = request.POST.get('complemento')
-        estado = request.POST.get('estado')
-        bairro = request.POST.get('bairro')
-        cidade = request.POST.get('cidade')
-        email = confirma_email
-        if email:
-            password = confirma_password
-            if password:
-                CustomUser = get_user_model()
-                try:
-                    user = CustomUser.objects.create_user(username=email, password=password)
-                    user.nome = nome
-                    user.cpf = cpf
-                    user.data_nascimento = data_nascimento
-                    user.telefone = telefone
-                    user.cep = cep
-                    user.endereco = endereco
-                    user.numero = numero
-                    user.complemento = complemento
-                    user.estado = estado
-                    user.bairro = bairro
-                    user.cidade = cidade
-                    user.save()
-                    return redirect('login') 
-                except Exception as e:
-                    return render(request, 'cadastro.html', {'error_message': 'Erro ao criar usuário. Tente novamente.'})
-            else: 
-                return render(request, 'cadastro.html', {'error_message': 'Senhas Não Conferem. Tente novamente.'})
-        else:
-            return render(request, 'cadastro.html', {'error_message': 'Emails Não Conferem. Tente novamente.'})
-    return render(request, 'cadastro.html')
+        form = CadastroForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.first_name = form.cleaned_data['nome']
+            user.set_password(form.cleaned_data['password'])
+            user.save()
 
-def login(request):
+            # Chama o comando createuser para criar o usuário no Django Admin
+            call_command("createuser", user.email, form.cleaned_data['password'], user.first_name)
+
+            messages.success(request, 'Cadastro realizado com sucesso. Faça o login.')
+            return redirect('login')
+        else:
+            messages.error(request, 'Erro no formulário. Corrija os campos destacados.')
+
+    else:
+        form = CadastroForm()
+
+    return render(request, 'cadastro.html', {'form': form})
+
+def login_view(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
-        return redirect('home') 
+
+        # Tenta autenticar o usuário usando email ou CPF
+        user = authenticate(request, username=email, password=password)
+
+        if user is not None:
+            # Usuário autenticado com sucesso, faz o login
+            login(request, user)
+            messages.success(request, 'Login realizado com sucesso.')
+            return redirect('home')  # Redireciona para a página inicial após o login
+        else:
+            # Usuário não autenticado
+            messages.error(request, 'Credenciais inválidas. Verifique seu email/CPF e senha.')
+            return render(request, 'login.html', {'login_failed': True})
+
     return render(request, 'login.html')
 
 def checkout(request):

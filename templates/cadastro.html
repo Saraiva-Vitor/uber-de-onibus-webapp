@@ -14,8 +14,61 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
     <link rel="icon" type="image/x-icon" href="{% static 'assets/logo-footer.png' %}">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     {% component_css_dependencies %}
 </head>
+
+<script>
+$(document).ready(function() {
+    // Formatação dinâmica para CPF
+    $('#id_cpf').on('input', function() {
+        let value = $(this).val().replace(/\D/g, '');
+        if (value.length > 3) {
+            value = value.substring(0, 3) + '.' + value.substring(3);
+        }
+        if (value.length > 7) {
+            value = value.substring(0, 7) + '.' + value.substring(7);
+        }
+        if (value.length > 11) {
+            value = value.substring(0, 11) + '-' + value.substring(11);
+        }
+        $(this).val(value);
+    });
+
+    // Formatação dinâmica para data de nascimento
+    $('#id_data_nascimento').on('input', function() {
+        let value = $(this).val().replace(/\D/g, '');
+        if (value.length > 2) {
+            value = value.substring(0, 2) + '/' + value.substring(2);
+        }
+        if (value.length > 5) {
+            value = value.substring(0, 5) + '/' + value.substring(5);
+        }
+        $(this).val(value);
+    });
+
+    // Formatação dinâmica para telefone
+    $('#id_telefone').on('input', function() {
+        let value = $(this).val().replace(/\D/g, '');
+        if (value.length > 2) {
+            value = '(' + value.substring(0, 2) + ') ' + value.substring(2);
+        }
+        if (value.length > 10) {
+            value = value.substring(0, 10) + '-' + value.substring(10);
+        }
+        $(this).val(value);
+    });
+
+    // Formatação dinâmica para CEP
+    $('#id_cep').on('input', function() {
+        let value = $(this).val().replace(/\D/g, '');
+        if (value.length > 5) {
+            value = value.substring(0, 5) + '-' + value.substring(5);
+        }
+        $(this).val(value);
+    });
+});
+</script>
 
 <style>
     @media (min-width: 750px) {
@@ -36,16 +89,17 @@
         ">
             <form method="post">
                 {% csrf_token %}
+                {{ form.non_field_errors }}
                 <h5 style="color: #171d25; border-bottom: 3px solid #FF7F0A;">Infome seus dados pessoais</h5>
                 <div class="row">
                     <div class="six columns">
                         <input name="nome" class="u-full-width" type="text" placeholder="Nome Completo"/>
                     </div>
                     <div class="three columns">
-                        <input name="cpf" class="u-full-width" type="text" placeholder="CPF"/>
+                        <input id="id_cpf" name="cpf" class="u-full-width" type="text" placeholder="CPF"/>
                     </div>
                     <div class="three columns">
-                        <input name="data_nascimento" class="u-full-width" type="text" placeholder="Data de Nascimento"/>
+                        <input id="id_data_nascimento" name="data_nascimento" class="u-full-width" type="text" placeholder="Data de Nascimento"/>
                     </div>
                 </div>
                 <div class="row">
@@ -58,7 +112,7 @@
                 </div>
                 <div class="row">
                     <div class="four columns">
-                        <input name="telefone" class="u-full-width" type="tel" placeholder="Telefone"/>
+                        <input id="id_telefone" name="telefone" class="u-full-width" type="tel" placeholder="Telefone"/>
                     </div>
                     <div class="four columns">
                         <input name="password" class="u-full-width" type="password" placeholder="Senha"/>
@@ -71,7 +125,7 @@
                 <h5 style="color: #171d25; margin-top: 10px; border-bottom: 3px solid #FF7F0A;">Informações Opcionais</h5>
                 <div class="row">
                     <div class="three columns">
-                        <input name="cep" class="u-full-width" type="text" placeholder="CEP"/>
+                        <input id="id_cep" name="cep" class="u-full-width" type="text" placeholder="CEP"/>
                     </div>
                     <div class="nine columns">
                         <input name="endereco" class="u-full-width" type="text" placeholder="Endereço"/>
@@ -96,6 +150,9 @@
                         <input name="cidade" class="u-full-width" type="text" placeholder="Cidade"/>
                     </div>
                 </div>
+                {% for field in form %}
+                    {{ field.errors }}
+                {% endfor %}
                 <input style="background-color: #171D25; color: white;" type="submit" value="Confirmar">
             </form>
         </div>
