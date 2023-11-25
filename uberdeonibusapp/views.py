@@ -19,11 +19,14 @@ def logout_view(request):
 def detalhes_rota(request, rota_id):
     rota = BusRoute.objects.get(id=rota_id)
     
-    # Obtém as poltronas vinculadas a esta rota
+    horarios = BusSchedule.objects.filter(route=rota)
     poltronas = Poltrona.objects.filter(route=rota)
+
+    print(horarios)
 
     context = {
         'rota': rota,
+        'horarios': horarios,
         'poltronas': poltronas,
     }
 

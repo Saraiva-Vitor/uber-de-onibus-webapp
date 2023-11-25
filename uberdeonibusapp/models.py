@@ -234,7 +234,7 @@ class BusSchedule(models.Model):
     hora = models.TimeField(null=True, blank=True)
 
     def __str__(self):
-        return f"{self.route.name} - {self.data} - {self.hora}"
+        return f"Rota: {self.route.name} - Data: {self.data} - Hora: {self.hora}"
     
     class Meta:
         verbose_name = 'Horário'

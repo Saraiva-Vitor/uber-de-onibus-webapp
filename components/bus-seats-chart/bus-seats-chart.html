@@ -3,12 +3,14 @@
 <div class="container">
     <h1>Lista de Poltronas</h1>
     <h1>Detalhes do Horário</h1>
-    <p>Rota: {{ horario.route.name }}</p>
-    <p>Horário: {{ horario.schedule }}</p>
+    <p>Rota: {{ rota.name }}</p>
+    <h5 style="color: #171d25; margin-top: 10px; border-bottom: 3px solid #FF7F0A;">Horários:</h5>
+    {% for horario in horarios %}
+        <p>Horário: {{ horario.hora }}</p>
+    {% endfor %}
     
-    <h2>Poltronas</h2>
     <h5 style="color: #171d25; margin-top: 10px; border-bottom: 3px solid #FF7F0A;">Poltronas</h5>
     {% for poltrona in poltronas %}
-        <p>Poltrona {{ poltrona.numero }} - {% if poltrona.passageiro %}Ocupada{% else %}Disponível{% endif %}</p>
+        <p>Poltrona {{ poltrona.numero }} - {% if poltrona.passageiro %}Ocupada - poltrona.passageiro.nome{% else %}Disponível{% endif %}</p>
     {% endfor %}
 </div>
