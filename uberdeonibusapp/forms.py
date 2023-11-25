@@ -5,7 +5,6 @@ from datetime import datetime
 import re
 
 class CadastroForm(forms.ModelForm):
-    complemento = forms.CharField(max_length=50, required=False)
     confirma_email = forms.EmailField(label='Confirme o Email', required=True)
     confirma_password = forms.CharField(widget=forms.PasswordInput, label='Confirme a Senha', required=True)
     data_nascimento = forms.DateField(
@@ -13,6 +12,7 @@ class CadastroForm(forms.ModelForm):
         widget=forms.DateInput(format='%d/%m/%Y')
     )
 
+    estado = forms.ChoiceField(choices=CustomUser._meta.get_field('estado').choices, widget=forms.Select(attrs={'class': 'u-full-width', 'style': 'background-color: white; padding: 6px;'}))
     class Meta:
         model = CustomUser
         fields = ['nome', 'cpf', 'data_nascimento', 'email', 'confirma_email', 'telefone', 'password', 'confirma_password',
