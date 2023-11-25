@@ -2,7 +2,7 @@
 
 {% for rota in rotas %}
 {% for horario in rota.busschedule_set.all %}
-<div class="card">
+<div class="card-details">
     <div class="container">
         <form action="{% url 'checkout' %}" method="GET">
             {% csrf_token %}

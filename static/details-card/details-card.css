@@ -1,18 +1,26 @@
-.card {
+.card-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     width: 100%;
+    max-width: 60%;
     margin: 30px auto;
     background-color: #171D25;
     border-radius: 10px;
     padding-top: 20px;
     padding-bottom: 20px;
-    margin-bottom: 30px;
+    max-width: 70%;
 }
 
-.card img {
+.card-details img {
     width: 100%;
     height: auto;
 }
 
+.container {
+    padding: 2px 16px;
+}
 
 @media screen and (max-width: 768px) {
     .card {

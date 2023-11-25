@@ -2,14 +2,14 @@
 
 {% for rota in rotas %}
 {% for horario in rota.busschedule_set.all %}
-<div class="card">
+<div class="card-details">
     <div class="container">
         <form action="{% url 'checkout' %}" method="GET">
             {% csrf_token %}
             <div class="one-third column">
                 <div class="container">
-                    <h6>PARTIDA: <span style="font-size: 24px; color: #FF7F0A;">{{ horario.schedule|time:"H:i" }}</span></h6>
-                    <input name="horario" type="hidden" value='{{ horario.schedule|time:"H:i" }}'>
+                    <h6>PARTIDA: <span style="font-size: 24px; color: #FF7F0A;">{{ horario.hora }}</span></h6>
+                    <input name="horario" type="hidden" value='{{ horario.hora }}'>
                     {% if rota.destination.image %}
                     <img src="{{ rota.destination.image.url }}" alt="{{ rota.destination.name }}" style="width:100%;">
                     {% else %}

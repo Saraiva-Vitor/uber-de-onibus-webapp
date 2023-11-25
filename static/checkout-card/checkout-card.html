@@ -1,13 +1,9 @@
 {% load static %}
-
 <div class="card">
-    <div class="map">
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d3691.7788545730496!2d-42.53436077470795!3d-22.28636542969663!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e0!4m3!3m2!1d{{ origemlat }}!2d{{ origemlong }}!4m3!3m2!1d{{ destinolat }}!2d{{ destinolong }}!5e0!3m2!1spt-BR!2sbr"
-            style="width: 100%; border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div id="map">
+        {{ mapa_html | safe }}
     </div>
-    <div class="container">
-        <form action="{% url 'checkout' %}" method="GET">
+    <form action="{% url 'checkout' %}" method="GET">
             {% csrf_token %}
             <div class="one-third column">
                 <div class="container" style="text-align: left;">
