@@ -83,6 +83,7 @@ def checkout(request):
         destinolat = request.GET.get('destinolat')
         destinolong = request.GET.get('destinolong')
         horario = request.GET.get('horario')
+        preco = request.GET.get('preco')
 
         origemlat = origemlat.replace(',', '.')
         origemlong = origemlong.replace(',', '.')
@@ -108,7 +109,7 @@ def checkout(request):
 
     mapa_html = mapa._repr_html_()
 
-    return render(request, 'checkout.html', {'mapa_html': mapa_html, 'origem': origem, 'origemlat': origemlat, 'origemlong': origemlong, 'destino': destino, 'destinolat': destinolat, 'destinolong': destinolong, 'horario': horario})
+    return render(request, 'checkout.html', {'mapa_html': mapa_html, 'preco': preco, 'origem': origem, 'origemlat': origemlat, 'origemlong': origemlong, 'destino': destino, 'destinolat': destinolat, 'destinolong': destinolong, 'horario': horario})
 
 def home(request):
     locais = Location.objects.all()
@@ -119,6 +120,7 @@ def home(request):
 def pesquisa(request):
     locais = Location.objects.all()
     routes = BusRoute.objects.all()
+
     dinamico = False
     
     if request.method == 'GET':
@@ -132,7 +134,12 @@ def pesquisa(request):
             rotas =  routes.filter(origin=origem_id)
         else:
             rotas = routes.filter(origin_id=origem_id, destination_id=destino_id)
- 
+            
+    rotas_com_soma = []
+    for rota in rotas:
+        preco_rota = rota.preco if rota.preco else 0
+        preco_tipo_onibus = rota.bus.tipo_onibus.preco if rota.bus and rota.bus.tipo_onibus else 0
+        soma_total = preco_rota + preco_tipo_onibus
+        rotas_com_soma.append({'rota': rota, 'soma_total': soma_total})
 
-
-        return render(request, 'pesquisa.html', {'locais': locais,'rotas':rotas, 'dinamico': dinamico,'nome_origem':rotas[0].origin.name, 'nome_destino':rotas[0].destination.name})
+        return render(request, 'pesquisa.html', {'rotas_com_soma': rotas_com_soma, 'locais': locais,'rotas':rotas, 'dinamico': dinamico,'nome_origem':rotas[0].origin.name, 'nome_destino':rotas[0].destination.name})

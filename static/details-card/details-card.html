@@ -1,6 +1,7 @@
 {% load static %}
 
 {% for rota in rotas %}
+{% for item in rotas_com_soma %}
 {% for horario in rota.busschedule_set.all %}
 <div class="card-details">
     <div class="container">
@@ -34,13 +35,14 @@
             <div class="one-third column">
                 <div class="container">
                     <p style="margin: 0; color: white;">POR APENAS:</p>
-                    <h4 style="color: #FF7F0A;">R$ <span style="color: white;">199,90</span></h4>
-                    <input type="hidden" value=''>
+                    <h4 style="color: #FF7F0A;">R$ <span style="color: white;">{{item.soma_total}}</span></h4>
+                    <input name="preco" type="hidden" value='{{item.soma_total}}'>
                     <input style="background-color: #FF7F0A;color: white;" type="submit" value="SELECIONAR">
                 </div>
             </div>
         </form>
     </div>
 </div>
+{% endfor %}
 {% endfor %}
 {% endfor %}
