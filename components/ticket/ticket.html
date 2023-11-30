@@ -1,19 +1,30 @@
 {% load static %}
-<div class="container">
-    <div class="box">
-        <div class="texto">
-            <h2>Seu ticket de embarque:</h2>
-        </div>
-        <div class="ticket-up">
-            <img class="logo-footer" src="{% static 'assets/logo-footer.png' %}" alt="">
-            <div class="texto-up">
-            <h3>Embarque:</h3>
-            <h3>data</h3>
+<div class="container" style="justify-content: center; margin-top: 20px;">
+    <div class="row" style="background-color: #FF7F0A; border-radius: 20px; width: 400px; text-align: center; margin-left: 50px;">
+        <div class="one-half column">
+            <div class="container" style="text-align: center;">
+                <img class="logo-footer" src="{% static 'assets/logo-footer.png' %}" alt="">
             </div>
         </div>
-        <div class="ticket-dow">
-            <div class="texto-up">
-            
+        <div class="one-half column">
+            <div class="container" style="text-align: center;">
+                <h6 style="font-size: 24px; color: #171D25">Embarque:</h6>
+                <h6 style="font-size: 24px; color: #171D25">Data</h6>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="one-half column">
+            <div class="container" style="text-align: center;">
+                <p style="margin: 0; color: white;">POR APENAS</p>
+                <h4 style="color: #FF7F0A;">R$ <span style="color: white;">Teste</span></h4>
+            </div>
+        </div>
+        <div class="one-half column">
+            <div class="container" style="text-align: center;">
+                <p style="margin: 0; color: white;">POR APENAS</p>
+                <h4 style="color: #FF7F0A;">R$ <span style="color: white;">Teste</span></h4>
+            </div>
         </div>
     </div>
 </div>
