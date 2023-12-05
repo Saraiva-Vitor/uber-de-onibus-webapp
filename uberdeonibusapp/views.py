@@ -12,6 +12,7 @@ from geopy.distance import geodesic
 
 # Create your views here.
 @csrf_protect
+
 def logout_view(request):
     logout(request)
     return redirect('home')

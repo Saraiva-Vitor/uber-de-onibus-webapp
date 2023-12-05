@@ -14,6 +14,7 @@
             <div class="grid-container-seatchart">
                 {% for poltrona in poltronas %}
                 <form action="" style="margin-top: -25px;">
+                    {% csrf_token %}
                     <div class="grid-item-seatchart">
                             {% if poltrona.passageiro %}
                                 <span style="font-size: 20px; color: transparent; position: relative; top: 25px; left: 20px;">{{ poltrona.numero }}</span>
