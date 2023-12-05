@@ -22,8 +22,6 @@ def detalhes_rota(request, rota_id):
     horarios = BusSchedule.objects.filter(route=rota)
     poltronas = Poltrona.objects.filter(route=rota)
 
-    print(horarios)
-
     context = {
         'rota': rota,
         'horarios': horarios,

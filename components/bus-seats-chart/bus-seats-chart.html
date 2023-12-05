@@ -10,7 +10,26 @@
     {% endfor %}
     
     <h5 style="color: #171d25; margin-top: 10px; border-bottom: 3px solid #FF7F0A;">Poltronas</h5>
-    {% for poltrona in poltronas %}
-        <p>Poltrona {{ poltrona.numero }} - {% if poltrona.passageiro %}Ocupada - poltrona.passageiro.nome{% else %}Disponível{% endif %}</p>
-    {% endfor %}
+        <div style="background: url('{% static 'assets/bus.png' %}'); background-repeat: no-repeat; height: 1200px;">
+            <div class="grid-container-seatchart">
+                {% for poltrona in poltronas %}
+                <form action="" style="margin-top: -25px;">
+                    <div class="grid-item-seatchart">
+                            {% if poltrona.passageiro %}
+                                <span style="font-size: 20px; color: transparent; position: relative; top: 25px; left: 20px;">{{ poltrona.numero }}</span>
+                                <input type="submit" style="cursor: default; position: relative; top: 35px; border: none; margin-top: -95px; height: 50px;" value=" ">
+                                <img src="{% static 'assets/seat-busy-icon.png' %}" alt="" height="600"/>
+                                <input name="{{ poltrona.numero }}" type="hidden"  value="{{ poltrona.numero }}">
+                            {% else %}
+                                <span style="font-size: 20px; position: relative; top: 25px; left: 20px;">{{ poltrona.numero }}</span>
+                                <input type="submit" style="position: relative; top: 35px; border: none; margin-top: -95px; height: 50px;" value=" ">
+                                <img src="{% static 'assets/seat-free-icon.png' %}" alt="" height="600"/>
+                                <input name="{{ poltrona.numero }}" type="hidden" value="{{ poltrona.numero }}">
+                            {% endif %}
+                        </input>
+                    </div>
+                </form>
+                {% endfor %}
+            </div>
+        </div>
 </div>
