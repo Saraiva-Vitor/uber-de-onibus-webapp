@@ -216,18 +216,6 @@ class CustomUser(AbstractUser):
 CustomUser._meta.get_field('groups').remote_field.related_name = 'customuser_groups'
 CustomUser._meta.get_field('user_permissions').remote_field.related_name = 'customuser_permissions'
 
-class Poltrona(models.Model):
-    route = models.ForeignKey(BusRoute, on_delete=models.CASCADE, null=True, blank=True)
-    numero = models.IntegerField()
-    passageiro = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True)
-    ocupada = models.BooleanField(("Ocupada"), null=True, blank=True, default=False)
-
-    def __str__(self):
-        return f"Passageiro: {self.passageiro} - Rota: {self.route} - Poltrona: {self.numero}"
-    
-    class Meta:
-        verbose_name = 'Poltrona'
-
 class BusSchedule(models.Model):
     route = models.ForeignKey(BusRoute, on_delete=models.CASCADE)
     data = models.DateField(null=True, blank=True)
@@ -239,3 +227,16 @@ class BusSchedule(models.Model):
     class Meta:
         verbose_name = 'Horário'
         verbose_name_plural = 'Horários'
+
+class Poltrona(models.Model):
+    route = models.ForeignKey(BusRoute, on_delete=models.CASCADE, null=True, blank=True)
+    horario = models.ForeignKey(BusSchedule, on_delete=models.CASCADE, null=True, blank=True)
+    numero = models.IntegerField()
+    passageiro = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True)
+    ocupada = models.BooleanField(("Ocupada"), null=True, blank=True, default=False)
+
+    def __str__(self):
+        return f"Passageiro: {self.passageiro} - Rota: {self.route} - Horário: {self.horario} - Poltrona: {self.numero}"
+    
+    class Meta:
+        verbose_name = 'Poltrona'

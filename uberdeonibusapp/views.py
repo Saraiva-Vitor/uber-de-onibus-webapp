@@ -9,6 +9,9 @@ import folium
 from folium import plugins
 from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
+from .tasks import atualizar_registro
+from django.utils import timezone
+from datetime import timedelta
 
 # Create your views here.
 @csrf_protect
@@ -17,11 +20,16 @@ def logout_view(request):
     logout(request)
     return redirect('home')
 
-def detalhes_rota(request, rota_id):
-    rota = BusRoute.objects.get(id=rota_id)
+def filtroassentos(request):
+    rota_id = request.GET.get('rota_id')
+    hora_id = request.GET.get('hora_id')
     
-    horarios = BusSchedule.objects.filter(route=rota)
-    poltronas = Poltrona.objects.filter(route=rota)
+    return redirect('detalhes_rota', rota_id=rota_id, hora_id=hora_id)
+
+def detalhes_rota(request, rota_id, hora_id):
+    rota = get_object_or_404(BusRoute, id=rota_id)
+    horarios = BusSchedule.objects.get(id=hora_id)
+    poltronas = Poltrona.objects.filter(route=rota, horario=horarios)
 
     context = {
         'rota': rota,
@@ -82,12 +90,30 @@ def checkout(request):
         destinolat = request.GET.get('destinolat')
         destinolong = request.GET.get('destinolong')
         horario = request.GET.get('horario')
-        preco = request.GET.get('preco')
+        precorota = request.GET.get('precorota')
+        precotipo = request.GET.get('precotipo')
+        poltrona = request.GET.get('poltrona')
+        poltrona_id = request.GET.get('poltrona_id')
+
+        poltronas = Poltrona.objects.filter(id=poltrona_id)
+        ids = poltronas.values_list('id', flat=True)
+        id = ids[0]
 
         origemlat = origemlat.replace(',', '.')
         origemlong = origemlong.replace(',', '.')
         destinolat = destinolat.replace(',', '.')
         destinolong = destinolong.replace(',', '.')
+        precorota = precorota.replace(',', '.')
+        precotipo = precotipo.replace(',', '.')
+
+    soma_total = round(float(precorota) + float(precotipo),2)
+
+    tempo_agendado = timezone.now() + timedelta(hours=0.01)
+    atualizar_registro.apply_async(args=[id], eta=tempo_agendado)
+
+    # Agende a tarefa para ser executada daqui a 1 hora (ajuste conforme necessário)
+    tempo_agendado = timezone.now() + timedelta(hours=0.02)
+    atualizar_registro.apply_async(args=[id], eta=tempo_agendado)
 
     def calcular_centro(coord1, coord2):
         return ((coord1[0] + coord2[0]) / 2, (coord1[1] + coord2[1]) / 2)
@@ -108,7 +134,7 @@ def checkout(request):
 
     mapa_html = mapa._repr_html_()
 
-    return render(request, 'checkout.html', {'mapa_html': mapa_html, 'preco': preco, 'origem': origem, 'origemlat': origemlat, 'origemlong': origemlong, 'destino': destino, 'destinolat': destinolat, 'destinolong': destinolong, 'horario': horario})
+    return render(request, 'checkout.html', {'mapa_html': mapa_html, 'poltrona': poltrona, 'preco': soma_total, 'origem': origem, 'origemlat': origemlat, 'origemlong': origemlong, 'destino': destino, 'destinolat': destinolat, 'destinolong': destinolong, 'horario': horario})
 
 def home(request):
     locais = Location.objects.all()

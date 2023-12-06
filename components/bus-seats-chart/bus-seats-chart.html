@@ -1,31 +1,44 @@
 {% load static %}
 <!-- style="background-color: #171D25; color: white; border-radius: 15px;" -->
 <div class="container">
-    <h1>Lista de Poltronas</h1>
-    <h1>Detalhes do Horário</h1>
-    <p>Rota: {{ rota.name }}</p>
-    <h5 style="color: #171d25; margin-top: 10px; border-bottom: 3px solid #FF7F0A;">Horários:</h5>
-    {% for horario in horarios %}
-        <p>Horário: {{ horario.hora }}</p>
-    {% endfor %}
-    
-    <h5 style="color: #171d25; margin-top: 10px; border-bottom: 3px solid #FF7F0A;">Poltronas</h5>
+    <h5 style="color: #171d25;  margin-top: 10px;">Rota: <span style="color: #FF7F0A;">{{ rota.name }}</span></h6>
+    <h5 style="color: #171d25;  border-bottom: 3px solid #FF7F0A;">Horário: <span style="color: #FF7F0A;">{{ horarios.hora }}</span></h5>
         <div style="background: url('{% static 'assets/bus.png' %}'); background-repeat: no-repeat; height: 1200px;">
             <div class="grid-container-seatchart">
                 {% for poltrona in poltronas %}
-                <form action="" style="margin-top: -25px;">
+                <form action="{% url 'checkout' %}" style="margin-top: -25px;">
                     {% csrf_token %}
                     <div class="grid-item-seatchart">
                             {% if poltrona.passageiro %}
-                                <span style="font-size: 20px; color: transparent; position: relative; top: 25px; left: 20px;">{{ poltrona.numero }}</span>
-                                <input type="submit" style="cursor: default; position: relative; top: 35px; border: none; margin-top: -95px; height: 50px;" value=" ">
+                                <span style="font-size: 20px; color: transparent; position: relative; left: 20px;">{{ poltrona.numero }}</span>
                                 <img src="{% static 'assets/seat-busy-icon.png' %}" alt="" height="600"/>
-                                <input name="{{ poltrona.numero }}" type="hidden"  value="{{ poltrona.numero }}">
+                                <input name="horario" type="hidden" value='{{ horarios.hora }}'>
+                                <input name="origem" type="hidden" value='{{ rota.origin }}'>
+                                <input name="poltrona_id" type="hidden" value='{{ poltrona.id }}'>
+                                <input name="precorota" type="hidden" value='{{ rota.preco }}'>
+                                <input name="precotipo" type="hidden" value='{{ rota.bus.tipo_onibus.preco }}'>
+                                <input name="origemlat" type="hidden" value='{{ rota.origin.latitude }}'>
+                                <input name="origemlong" type="hidden" value='{{ rota.origin.longitude }}'>
+                                <input name="destino" type="hidden" value='{{ rota.destination }}'>
+                                <input name="destinolat" type="hidden" value='{{ rota.destination.latitude }}'>
+                                <input name="destinolong" type="hidden" value='{{ rota.destination.longitude }}'>
+                                <input name="poltrona" type="hidden"  value="{{ poltrona.numero }}">
+                                <input type="submit" style="cursor: default; position: relative; border: none; bottom: 10px; margin-top: -95px; height: 50px;" value=" ">
                             {% else %}
-                                <span style="font-size: 20px; position: relative; top: 25px; left: 20px;">{{ poltrona.numero }}</span>
-                                <input type="submit" style="position: relative; top: 35px; border: none; margin-top: -95px; height: 50px;" value=" ">
+                                <span style="font-size: 20px; position: relative; left: 20px;">{{ poltrona.numero }}</span>
                                 <img src="{% static 'assets/seat-free-icon.png' %}" alt="" height="600"/>
-                                <input name="{{ poltrona.numero }}" type="hidden" value="{{ poltrona.numero }}">
+                                <input name="horario" type="hidden" value='{{ horarios.hora }}'>
+                                <input name="precorota" type="hidden" value='{{ rota.preco }}'>
+                                <input name="precotipo" type="hidden" value='{{ rota.bus.tipo_onibus.preco }}'>
+                                <input name="origem" type="hidden" value='{{ rota.origin }}'>
+                                <input name="poltrona_id" type="hidden" value='{{ poltrona.id }}'>
+                                <input name="origemlat" type="hidden" value='{{ rota.origin.latitude }}'>
+                                <input name="origemlong" type="hidden" value='{{ rota.origin.longitude }}'>
+                                <input name="destino" type="hidden" value='{{ rota.destination }}'>
+                                <input name="destinolat" type="hidden" value='{{ rota.destination.latitude }}'>
+                                <input name="destinolong" type="hidden" value='{{ rota.destination.longitude }}'>
+                                <input name="poltrona" type="hidden" value="{{ poltrona.numero }}">
+                                <input type="submit" style="position: relative; bottom: 10px; border: none; margin-top: -95px; height: 50px;" value=" ">
                             {% endif %}
                         </input>
                     </div>

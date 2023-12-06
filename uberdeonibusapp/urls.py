@@ -10,9 +10,9 @@ urlpatterns = [
     path("login/", views.login_view, name="login"),
     path('logout/', views.logout_view, name='logout'),
     path("cadastro/", views.cadastro, name="cadastro"),
-    path("home/", views.home, name="home"),
     path("pesquisa/", views.pesquisa, name="pesquisa"),
-    path('rota/<int:rota_id>/', views.detalhes_rota, name='detalhes_rota'),
+    path("mapa-de-assentos/", views.filtroassentos, name="filtroassentos"),
+    path('assentos/<int:rota_id>/<int:hora_id>/', views.detalhes_rota, name='detalhes_rota'),
     path("checkout/", views.checkout, name="checkout"),
 ]
 
