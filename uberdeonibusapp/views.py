@@ -9,9 +9,10 @@ import folium
 from folium import plugins
 from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
-from .tasks import atualizar_registro
-from django.utils import timezone
-from datetime import timedelta
+from django.http import HttpResponse
+from .tasks import reservar_poltrona_assincrona
+import asyncio
+from asgiref.sync import async_to_sync
 
 # Create your views here.
 @csrf_protect
@@ -108,12 +109,10 @@ def checkout(request):
 
     soma_total = round(float(precorota) + float(precotipo),2)
 
-    tempo_agendado = timezone.now() + timedelta(hours=0.01)
-    atualizar_registro.apply_async(args=[id], eta=tempo_agendado)
+    async def reservar_poltrona_assincrona_wrapper(poltrona_id):
+        await reservar_poltrona_assincrona(poltrona_id)
 
-    # Agende a tarefa para ser executada daqui a 1 hora (ajuste conforme necessário)
-    tempo_agendado = timezone.now() + timedelta(hours=0.02)
-    atualizar_registro.apply_async(args=[id], eta=tempo_agendado)
+    async_to_sync(reservar_poltrona_assincrona_wrapper(poltrona_id))
 
     def calcular_centro(coord1, coord2):
         return ((coord1[0] + coord2[0]) / 2, (coord1[1] + coord2[1]) / 2)

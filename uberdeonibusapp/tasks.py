@@ -1,13 +1,25 @@
-# tasks.py
-from celery import shared_task
-from datetime import timedelta
-from django.utils import timezone
-from .models import *
+import asyncio
+from datetime import datetime, timedelta
+from .models import Poltrona
 
-@shared_task
-def atualizar_registro(registro_id):
-    # Lógica para atualizar o registro
-    registro = Poltrona.objects.get(pk=registro_id)
-    registro.ocupada = False
-    registro.save()
-    print(registro.ocupada)
+async def reservar_poltrona_assincrona(poltrona_id):
+    # Lógica de reserva de poltrona
+    poltrona = Poltrona.objects.get(pk=poltrona_id)
+
+    if not poltrona.ocupada:
+        # Reserva a poltrona
+        poltrona.ocupada = True
+        poltrona.save()
+
+        print(f'Poltrona {poltrona.numero} reservada em {datetime.now()}')
+
+        # Aguarda 5 minutos antes de liberar a poltrona
+        await asyncio.sleep(300)
+
+        # Libera a poltrona após o tempo especificado
+        poltrona.ocupada = False
+        poltrona.save()
+
+        print(f'Poltrona {poltrona.numero} liberada em {datetime.now()}')
+    else:
+        print(f'Poltrona {poltrona.numero} já está ocupada')
