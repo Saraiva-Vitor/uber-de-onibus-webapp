@@ -29,6 +29,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = ['https://uber-de-onibus.up.railway.app']
+
 # Application definition
 
 INSTALLED_APPS = [
