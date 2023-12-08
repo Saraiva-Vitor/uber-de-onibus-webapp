@@ -16,17 +16,18 @@ from asgiref.sync import async_to_sync
 
 # Create your views here.
 @csrf_protect
-
 def logout_view(request):
     logout(request)
     return redirect('home')
 
+@csrf_protect
 def filtroassentos(request):
     rota_id = request.GET.get('rota_id')
     hora_id = request.GET.get('hora_id')
     
     return redirect('detalhes_rota', rota_id=rota_id, hora_id=hora_id)
 
+@csrf_protect
 def detalhes_rota(request, rota_id, hora_id):
     rota = get_object_or_404(BusRoute, id=rota_id)
     horarios = BusSchedule.objects.get(id=hora_id)
@@ -40,17 +41,19 @@ def detalhes_rota(request, rota_id, hora_id):
 
     return render(request, 'mapaAssentos.html', context)
 
+@csrf_protect
 def cadastro(request):
     if request.method == 'POST':
         form = CadastroForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
             user.first_name = form.cleaned_data['nome']
+            user.last_name = form.cleaned_data['cpf']
             user.set_password(form.cleaned_data['password'])
             user.save()
 
             # Chama o comando createuser para criar o usuário no Django Admin
-            call_command("createuser", user.email, form.cleaned_data['password'], user.first_name)
+            call_command("createuser", user.email, form.cleaned_data['password'], user.first_name, user.last_name)
 
             messages.success(request, 'Cadastro realizado com sucesso. Faça o login.')
             return redirect('login')
@@ -62,12 +65,12 @@ def cadastro(request):
 
     return render(request, 'cadastro.html', {'form': form})
 
+@csrf_protect
 def login_view(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
 
-        # Tenta autenticar o usuário usando email ou CPF
         user = authenticate(request, username=email, password=password)
 
         if user is not None:
@@ -82,6 +85,7 @@ def login_view(request):
 
     return render(request, 'login.html')
 
+@csrf_protect
 def checkout(request):
     if request.method == 'GET':
         origem = request.GET.get('origem')
@@ -135,12 +139,14 @@ def checkout(request):
 
     return render(request, 'checkout.html', {'mapa_html': mapa_html, 'poltrona': poltrona, 'preco': soma_total, 'origem': origem, 'origemlat': origemlat, 'origemlong': origemlong, 'destino': destino, 'destinolat': destinolat, 'destinolong': destinolong, 'horario': horario})
 
+@csrf_protect
 def home(request):
     locais = Location.objects.all()
     routes = BusRoute.objects.all()
 
     return render(request, 'home.html', {'locais': locais, 'routes': routes})
 
+@csrf_protect
 def pesquisa(request):
     locais = Location.objects.all()
     routes = BusRoute.objects.all()

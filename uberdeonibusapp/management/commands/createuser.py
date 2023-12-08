@@ -9,17 +9,21 @@ class Command(BaseCommand):
         parser.add_argument('username', type=str, help='O nome de usuário do novo usuário')
         parser.add_argument('password', type=str, help='A senha do novo usuário')
         parser.add_argument('nome', type=str, help='O nome do novo usuário')
+        parser.add_argument('cpf', type=str, help='O CPF do novo usuário')
 
     def handle(self, *args, **kwargs):
         username = kwargs['username']
         password = kwargs['password']
         first_name = kwargs['nome']
+        cpf = kwargs['cpf']
 
         # Verifica se o usuário já existe
         if User.objects.filter(username=username).exists():
             self.stdout.write(self.style.ERROR(f'O usuário "{username}" já existe.'))
         else:
-            user = User.objects.create_user(username=username, password=password, first_name=first_name)
+            user = User.objects.create_user(username=username, password=password, first_name=first_name, last_name=cpf, email=username)
             custom_user = CustomUser.objects.get(email=username)
             custom_user.first_name = first_name
+            custom_user.last_name = cpf
+            custom_user.email = username
             custom_user.save()
