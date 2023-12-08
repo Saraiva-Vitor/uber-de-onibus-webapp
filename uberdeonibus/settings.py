@@ -184,6 +184,11 @@ JAZZMIN_SETTINGS = {
     "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs"},
 }
 
+MIDDLEWARE_CLASSES = [
+    'django.contrib.csrf.middleware.CsrfMiddleware',
+]
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
@@ -193,7 +198,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.contrib.csrf.middleware.CsrfMiddleware',
 ]
 
 ROOT_URLCONF = 'uberdeonibus.urls'
