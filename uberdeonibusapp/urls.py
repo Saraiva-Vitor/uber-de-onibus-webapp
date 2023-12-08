@@ -12,7 +12,7 @@ urlpatterns = [
     path("cadastro/", views.cadastro, name="cadastro"),
     path("pesquisa/", views.pesquisa, name="pesquisa"),
     path("mapa-de-assentos/", views.filtroassentos, name="filtroassentos"),
-    path('assentos/<int:rota_id>/<int:hora_id>/', views.detalhes_rota, name='detalhes_rota'),
+    path('mapa-de-assentos/<int:rota_id>/<int:hora_id>/', views.detalhes_rota, name='detalhes_rota'),
     path("checkout/", views.checkout, name="checkout"),
 ]
 

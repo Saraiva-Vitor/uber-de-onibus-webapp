@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load component_tags %}
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uber de Ônibus - Página Não Encontrada</title>
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/skeleton.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/logo-footer.png' %}">
+    {% component_css_dependencies %}
+</head>
+
+<body>
+    {% component "header" %}
+    <div class="container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+        <h2 style="color: #171d25; border-bottom: 3px solid #FF7F0A; text-align: center;">Página não encontrada</h2>
+        <form action="{% url 'home' %}">
+            {% csrf_token %}
+            <input style="background-color: #171d25; color: white;" type="submit" value="Ir para HomePage">
+        </form>
+    </div>
+    {% component "footer" %}
+</body>

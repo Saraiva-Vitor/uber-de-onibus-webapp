@@ -16,8 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include,path
+from django.conf import settings
+from django.urls import include, path, re_path
+from django.views.generic import TemplateView
+from django.views.defaults import server_error
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("uberdeonibusapp.urls")),
+    path('error/', server_error),
 ]
+
+if settings.DEBUG:
+    urlpatterns += [
+        re_path(r'^.*/$', TemplateView.as_view(template_name='PageNotFound.html'), name='NotFound'),
+    ]
