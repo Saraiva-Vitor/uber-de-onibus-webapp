@@ -182,3 +182,7 @@ def pagamento(request):
         cvc_cartao = request.POST.get('cvc')
         parcelamento = request.POST.get('times')
     return render(request, 'pagamento.html')
+
+def passagem(request):
+
+    return render(request, 'passagem.html')
