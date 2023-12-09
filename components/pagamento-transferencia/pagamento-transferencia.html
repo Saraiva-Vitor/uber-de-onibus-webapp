@@ -1,0 +1,37 @@
+{% load static %}
+<div class="container" style=" text-align: center; margin-top: 20px; margin-bottom: 20px;">    
+    <div class="container" style="background-color: #171d25; box-shadow: 0px 4px 4px 2px rgb(0, 0, 0); border-radius: 10px;">
+        <div class="button-container" style="align-items: center; justify-content: center; padding: 10px; margin-left: 0%;">
+            <h3 style="text-align: left; border-bottom: 3px solid #FF7F0A;">Transferência Bancária</h3>
+            <form method="post">
+                {% csrf_token %}
+                <div class="row" style="padding-top: 10px;">
+                    <div class="twelve columns">
+                        <img src="{% static 'assets/transferencia-bancaria.png' %}" alt="" width="300" style="padding-right: 5px;">                    
+                    </div>
+                </div>
+                <div class="row" style="padding-top: 20px;">
+                    <div class="six columns">
+                        <input name="banco" class="u-full-width" type="text" id="banco" style="padding: 8px; margin-bottom: 10px;" placeholder="Banco" required/>
+                    </div>
+                    <div class="six columns">
+                        <input name="agencia" class="u-full-width" type="text" id="agencia" style="padding: 8px; margin-bottom: 10px;" placeholder="Agência Bancária" required />
+                    </div>
+                </div>
+                <div class="row" style="padding-top: 10px;">
+                    <div class="six columns">
+                        <input name="cpf" class="u-full-width" type="text" id="cpf" style="padding: 8px; margin-bottom: 10px;" placeholder="CPF " required/>
+                    </div>
+                    <div class="six columns">
+                        <input name="conta" class="u-full-width" type="text" id="conte" style="padding: 8px; margin-bottom: 10px;" placeholder="Número da Conta" required/>
+                    </div>
+                </div> 
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="padding-top: 20px; padding-bottom: 20px; text-align: center;">
+    <button type="submit" style="background-color: #171d25; color: #FFFFFF; border: none; border-radius: 8px; cursor: pointer; width: 220px;">Finalizar Compra</button>
+</div>
+

@@ -14,6 +14,7 @@ urlpatterns = [
     path("mapa-de-assentos/", views.filtroassentos, name="filtroassentos"),
     path('mapa-de-assentos/<int:rota_id>/<int:hora_id>/', views.detalhes_rota, name='detalhes_rota'),
     path("checkout/", views.checkout, name="checkout"),
+    path("pagamento/", views.pagamento, name="pagamento"),
 ]
 
 if settings.DEBUG:

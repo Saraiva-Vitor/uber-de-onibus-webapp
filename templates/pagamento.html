@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load component_tags %}
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uber de Ônibus - Pagamento</title>
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/skeleton.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/logo-footer.png' %}">
+    {% component_css_dependencies %}
+</head>
+<body>
+    {% component "header" %}
+    {% component "pagamento-pix" %}
+<<<<<<< HEAD
+    {% component "pagamento-boleto" %}
+    {% component "pagamento-credito" %}
+    {% component "pagamento-transferencia" %}
+=======
+>>>>>>> a7866631ca7c1dff04d42638e1d62acac5c85e34
+    {% component "footer" %}
+</body>
+</html>

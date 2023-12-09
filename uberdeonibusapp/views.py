@@ -173,3 +173,12 @@ def pesquisa(request):
         rotas_com_soma.append({'rota': rota, 'soma_total': soma_total})
 
         return render(request, 'pesquisa.html', {'rotas_com_soma': rotas_com_soma, 'locais': locais,'rotas':rotas, 'dinamico': dinamico,'nome_origem':rotas[0].origin.name, 'nome_destino':rotas[0].destination.name})
+
+def pagamento(request):
+    if request.method == 'POST':
+        nome = request.POST.get('nome')
+        cpf = request.POST.get('cpf')
+        numero_cartao = request.POST.get('card_number')
+        cvc_cartao = request.POST.get('cvc')
+        parcelamento = request.POST.get('times')
+    return render(request, 'pagamento.html')
