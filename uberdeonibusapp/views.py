@@ -94,3 +94,12 @@ def pesquisa(request):
 
 
         return render(request, 'pesquisa.html', {'locais': locais,'rotas':rotas, 'dinamico': dinamico})
+    
+def pagamento(request):
+    if request.method == 'POST':
+        nome = request.POST.get('nome')
+        cpf = request.POST.get('cpf')
+        numero_cartao = request.POST.get('card_number')
+        cvc_cartao = request.POST.get('cvc')
+        parcelamento = request.POST.get('times')
+    return render(request, 'pagamento.html')

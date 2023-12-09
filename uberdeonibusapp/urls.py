@@ -12,6 +12,7 @@ urlpatterns = [
     path("home/", views.home, name="home"),
     path("pesquisa/", views.pesquisa, name="pesquisa"),
     path("checkout/", views.checkout, name="checkout"),
+    path("pagamento/", views.pagamento, name="pagamento"),
 ]
 
 if settings.DEBUG:

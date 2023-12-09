@@ -1,0 +1,39 @@
+{% load static %}
+<div class="container" style=" text-align: center; margin-top: 20px; margin-bottom: 20px;">    
+    <div class="container" style="background-color: #171d25; box-shadow: 0px 4px 4px 2px rgb(0, 0, 0); border-radius: 10px;">
+        <div class="button-container" style="align-items: center; justify-content: center; padding: 10px; margin-left: 0%;">
+            <h3 style="text-align: left; border-bottom: 3px solid #FF7F0A;">PIX</h3>
+            <form method="post">
+                {% csrf_token %}
+                <div class="row" style="padding-top: 8%;">
+                    <img src="{% static 'assets/pix-bc-logo.png' %}" alt="" width="300">
+                </div>
+                <div class="row" style="padding-top: 8%; padding-left: 110px;">
+                    <div class="two columns" style="padding-right: 10px;">
+                        <img src="{% static 'assets/Círculo1.png' %}" alt="" width="35">                    
+                    </div>
+                    <div class="two columns"style="padding-left: 20%;">
+                        <img src="{% static 'assets/Círculo2.png' %}" alt="" width="35">                    
+                    </div>
+                    <div class="two columns" style="padding-left: 30%;">
+                        <img src="{% static 'assets/Círculo3.png' %}" alt="" width="35">                    
+                    </div>
+                </div>
+                <div class="row" style="padding-top: 5%; padding-left: 10%;">
+                    <div class="three columns">
+                        <h6>Abra o app do seu banco na opção PIX</h6>                                   
+                    </div>
+                    <div class="four columns" style="padding-left: 7%;">
+                        <h6>Escaneie o código QR ou copie e cole o código                                        
+                    </div>
+                    <div class="three columns" style="padding-left: 10%;">
+                        <h6>Confirme os dados e conclua a compra</h6>    
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container" style="padding-top: 20px; text-align: center;">
+    <button type="submit" style="background-color: #171d25; color: #FFFFFF; border: none; border-radius: 8px; cursor: pointer; width: 220px;">Finalizar Compra</button>
+</div>
