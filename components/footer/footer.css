@@ -10,18 +10,14 @@ hr {
     width: 98%;
 }
 
+.u-pull-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .logo-footer{
     height: 100px;
     width: 100px;
-}
-
-.top-footer{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin: 20px;
-    font-size: 32px;
 }
 
 .middle-footer{

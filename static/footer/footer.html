@@ -2,36 +2,39 @@
 <script src="https://kit.fontawesome.com/52d98fe718.js" crossorigin="anonymous"></script>
 <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
 <footer>
-    <div class="top-footer">
-        <img class="logo-footer" src="{% static 'assets/logo-footer.png' %}" alt="">
-        <div>
+    <div class="row" style="display: flex; align-items: center; justify-content: space-between; margin: 20px;">
+        <div class="nine columns">
+        <img class="logo-footer" style="justify-content: flex-start;" src="{% static 'assets/logo-footer.png' %}" alt="">
+        </div>
+        <div class="three columns" style="font-size: 32px; text-align: right;">
             <i class="fa-brands fa-square-facebook"></i>
             <i class="fa-brands fa-square-instagram"></i>
             <i class="fa-brands fa-square-twitter"></i>
         </div>
     </div>
     <hr/>
-    <div class="middle-footer">
-        <div>
-            <div class="footer-text">Cartões de Crédito</div>
+    <div class="row" style="margin: 20px; text-align: center;">
+        <div class="one-third column">
+            <p>Cartões de Crédito</p>
             <img src="{% static 'assets/visa-icon.png' %}" alt="">
             <img src="{% static 'assets/mastercard-icon.png' %}" alt="">
             <img src="{% static 'assets/maestro-icon.png' %}" alt="">
             <img src="{% static 'assets/america-icon.png' %}" alt="">
         </div>
-        <div>
-            <div class="footer-text">Transferência Bancária</div>
-            <img src="{% static 'assets/transferencia-bancaria.png' %}" alt="">
+        <div class="one-third column">
+            <p>Transferência Bancária</p>
+            <img class="" src="{% static 'assets/transferencia-bancaria.png' %}" alt="">
         </div>
-        <div>
-            <div class="footer-text">Pix</div>
+        <div class="one-third column">
+            <p>Pix</p>
             <img src="{% static 'assets/pix-bc-logo.png' %}" alt="">
         </div>
     </div>
     <hr/>
-    <div class="bottom-footer">
-        <div class="footer-text">© Grupo 2 - Princípios de Engenharia de Software - 2023.2</div> 
-        <div class="footer-text">Todos os direitos reservados</div>
+    <div class="row" style="display: flex; align-items: center; justify-content: space-between; margin: 20px;">
+        <div class="one-half column" style="text-align: left;">© Grupo 2 - Princípios de Engenharia de Software - 2023.2</div> 
+        <div class="one-half column" style="text-align: right;">Todos os direitos reservados</div>
     </div>
 </footer>
