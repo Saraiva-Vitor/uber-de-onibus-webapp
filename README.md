@@ -37,6 +37,12 @@ Página de Resultado da Pesquisa de Rotas
   
 Página de Descrição do Horário Selecionado da Rota
 
-* /mapa-de-assentos
+* /mapa-de-assentos/rota_id/hora_id
   
-Página do Mapa para Seleção do Assento da Rota
+Página do Mapa para Seleção do Assento da Rota e Horários Específicos
+
+* /pagamento
+Página dos Métodos de Pagamento
+
+* /passagem
+Página com o Ticket de Embarque
