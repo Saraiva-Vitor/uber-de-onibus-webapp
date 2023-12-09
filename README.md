@@ -42,7 +42,9 @@ Página de Descrição do Horário Selecionado da Rota
 Página do Mapa para Seleção do Assento da Rota e Horários Específicos
 
 * /pagamento
+
 Página dos Métodos de Pagamento
 
 * /passagem
+
 Página com o Ticket de Embarque
