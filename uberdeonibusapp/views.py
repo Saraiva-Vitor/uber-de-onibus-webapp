@@ -13,6 +13,7 @@ from django.http import HttpResponse
 from .tasks import reservar_poltrona_assincrona
 import asyncio
 from asgiref.sync import async_to_sync
+from datetime import datetime
 
 # Create your views here.
 @csrf_protect
@@ -164,7 +165,7 @@ def pesquisa(request):
             rotas =  routes.filter(origin=origem_id)
         else:
             rotas = routes.filter(origin_id=origem_id, destination_id=destino_id)
-            
+          
     rotas_com_soma = []
     for rota in rotas:
         preco_rota = rota.preco if rota.preco else 0
@@ -172,7 +173,7 @@ def pesquisa(request):
         soma_total = preco_rota + preco_tipo_onibus
         rotas_com_soma.append({'rota': rota, 'soma_total': soma_total})
 
-        return render(request, 'pesquisa.html', {'rotas_com_soma': rotas_com_soma, 'locais': locais,'rotas':rotas, 'dinamico': dinamico,'nome_origem':rotas[0].origin.name, 'nome_destino':rotas[0].destination.name,'data':data})
+        return render(request, 'pesquisa.html', {'rotas_com_soma': rotas_com_soma, 'locais': locais,'rotas':rotas, 'dinamico': dinamico,'nome_origem':rotas[0].origin.name, 'nome_destino':rotas[0].destination.name, 'nome_rota':rotas[0].name,'origem_id':origem_id,'destino_id':destino_id,'data':data})
 
 def pagamento(request):
     if request.method == 'POST':
@@ -183,6 +184,8 @@ def pagamento(request):
         parcelamento = request.POST.get('times')
     return render(request, 'pagamento.html')
 
-def passagem(request):
+def confirmacao_pagamento(request):
+    return render(request, 'confirmacaoPagamento.html')
 
+def passagem(request):
     return render(request, 'passagem.html')

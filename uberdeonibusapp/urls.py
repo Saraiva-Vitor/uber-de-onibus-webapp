@@ -15,6 +15,7 @@ urlpatterns = [
     path('mapa-de-assentos/<int:rota_id>/<int:hora_id>/', views.detalhes_rota, name='detalhes_rota'),
     path("checkout/", views.checkout, name="checkout"),
     path("pagamento/", views.pagamento, name="pagamento"),
+    path("confirmacao-pagamento/", views.confirmacao_pagamento, name="confirmacao_pagamento"),
     path("passagem/", views.passagem, name="passagem"),
 ]
 
