@@ -3,8 +3,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 100%;
-    max-width: 80%;
+    max-width: 100%;
     margin: 30px auto;
     background-color: #171D25;
     border-radius: 10px;
@@ -20,7 +19,6 @@
 }
 
 .container {
-    padding: 2px 16px;
 }
 
 @media screen and (max-width: 768px) {
