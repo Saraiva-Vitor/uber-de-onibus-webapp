@@ -39,6 +39,10 @@
                         <input name="cpf_passageiro" class="u-full-width" type="text" value="{{ user.last_name }}" readonly>
                     </div>
                 </div>
+                <input name="horario" type="hidden" value="{{ horario }}">
+                <input name="poltrona" type="hidden" value="{{ poltrona }}">
+                <input name="origem" type="hidden" value="{{ origem }}">
+                <input name="destino" type="hidden" value="{{ destino }}">
                 <input style="background: #171d25; color: white;" type="submit" value="Confirmar Dados do Passageiro">
             </form>
         </div>
@@ -86,6 +90,10 @@
                         <input name="pagamento" id="transf" type="radio" value="4">
                     </div>
                 </div>
+                <input name="horario" type="hidden" value="{{ horario }}">
+                <input name="poltrona" type="hidden" value="{{ poltrona }}">
+                <input name="origem" type="hidden" value="{{ origem }}">
+                <input name="destino" type="hidden" value="{{ destino }}">
 
                 <input style="background: #171d25; color: white;" type="submit" value="Confirmar Dados do Passageiro e Método de Pagamento">
             </form>

@@ -8,49 +8,54 @@
         </div>
         <div class="one-half column">
             <div class="container" style="text-align: center; margin-top: 20px;">
-                <h6 style="font-size: 24px; color: #171D25 ;" >Embarque:</h6>
-                <h6 style="font-size: 24px; color: #171D25">Data</h6>
+                <h6 style="font-size: 24px; color: #171D25;" >Embarque:</h6>
+                <h6 style="font-size: 24px; color: #171D25">{{ horario }}</h6>
             </div>
         </div>
     </div>
     <div class="row card-ticket" style="background-color: #171D25; border-radius: 20px; width: 400px; text-align: center;">
-        <div class="one-half column">
-            <div class="container" style="text-align: center; margin-top: 20px;">
-                <h6 style="font-size: 24px; color: #ffffff ;">origem:</h6>
-                <h6 style="font-size: 24px; color: #ffffff">test</h6>
+        <div class="row">
+            <div class="one-half column">
+                <div class="container" style="text-align: center; margin-top: 20px;">
+                    <h6 style="font-size: 18px; color: #FF7F0A; margin-bottom: 0;">ORIGEM:</h6>
+                    <h6 style="font-size: 24px; color: #ffffff">{{ origem }}</h6>
+                </div>
             </div>
-        </div>
-        <div class="one-half column">
-            <div class="container" style="text-align: center; margin-top: 20px;">
-                <h6 style="font-size: 24px; color: #ffffff ;">Destino:</h6>
-                <h6 style="font-size: 24px; color: #ffffff">test</h6>
+            <div class="one-half column">
+                <div class="container" style="text-align: center; margin-top: 20px;">
+                    <h6 style="font-size: 18px; color: #FF7F0A; margin-bottom: 0;">DESTINO:</h6>
+                    <h6 style="font-size: 24px; color: #ffffff">{{ destino }}</h6>
+                </div>
             </div>
         </div>
         <div class="row card-ticket" style="background-color: #171D25; border-radius: 20px; width: 400px; text-align: center; ;">
             <div class="one-half column">
                 <div class="container" style="text-align: center;">
-                    <h6 style="font-size: 24px; color: #FF7F0A ;">Plataforma: A1</h6>
+                    <h6 style="font-size: 18px; color: #FF7F0A; margin-bottom: 0;">PLATAFORMA:</h6>
+                    <h6 style="font-size: 24px; color: #ffffff">A1</h6>
                 </div>
             </div>
             <div class="one-half column">
                 <div class="container" style="text-align: center;">
-                    <h6 style="font-size: 24px; color: #FF7F0A">Poltrona: 16</h6>
+                    <h6 style="font-size: 18px; color: #FF7F0A; margin-bottom: 0;">POLTRONA:</h6>
+                    <h6 style="font-size: 24px; color: #ffffff;">{{ poltrona }}</h6>
                 </div>
             </div>
         </div>
         <div class="row card-ticket" style="background-color: #171D25; border-radius: 20px; width: 400px; text-align: center; ;">
             <div class="container" style="text-align: center;">
-                <h10 style="font-size: 24px; color: #FF7F0A ;">Passageiro:</h10>
+                <h6 style="font-size: 18px; color: #FF7F0A; margin-bottom: 0;">PASSAGEIRO:</h6>
+                <h6 style="font-size: 24px; color: #ffffff;">{{ passageiro }}</h6>
             </div>
         </div>
         <div class="row card-ticket" style="background-color: #171D25; border-radius: 20px; width: 400px; text-align: center; ;">
             <div class="container" style="text-align: center;">
-                <h6 style="font-size: 24px; color: #ffffff ;">Nome e Sobrenome Nome </h6>
+                
             </div>
         </div>
         <div class="row card-ticket" style="background-color: #171D25; border-radius: 20px; width: 400px; text-align: center; ;">
             <div class="container" style="text-align: center;">
-                <h8 style="font-size: 24px; color: #FF7F0A ;">Documeto: 14520534720</h>
+                <h6 style="font-size: 18px; color: #FF7F0A ;">DOCUMENTO: <span>{{ cpf_passageiro }}</span> </h6>
             </div>
         </div>
         <div class="row card-ticket" style="background-color: #171D25; border-radius: 20px; width: 400px; text-align: center  ;">

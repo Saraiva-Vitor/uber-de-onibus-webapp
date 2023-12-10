@@ -184,10 +184,29 @@ def pagamento(request):
         tel_passageiro = request.GET.get('tel_passageiro')
         metodo_pagamento = request.GET.get('pagamento')
 
-    return render(request, 'pagamento.html', {'passageiro': passageiro, 'nascimento_passageiro': nascimento_passageiro, 'cpf_passageiro': cpf_passageiro, 'email_passageiro': email_passageiro, 'tel_passageiro': tel_passageiro, 'metodo_pagamento': metodo_pagamento})
+        origem = request.GET.get('origem')
+        destino = request.GET.get('destino')
+        horario = request.GET.get('horario')
+        poltrona = request.GET.get('poltrona')
+
+    return render(request, 'pagamento.html', {'origem': origem, 'destino': destino, 'horario': horario, 'poltrona': poltrona,'passageiro': passageiro, 'nascimento_passageiro': nascimento_passageiro, 'cpf_passageiro': cpf_passageiro, 'email_passageiro': email_passageiro, 'tel_passageiro': tel_passageiro, 'metodo_pagamento': metodo_pagamento})
 
 def confirmacao_pagamento(request):
-    return render(request, 'confirmacaoPagamento.html')
+    if request.method == 'GET':
+        passageiro = request.GET.get('passageiro')
+        cpf_passageiro = request.GET.get('cpf_passageiro')
+        origem = request.GET.get('origem')
+        destino = request.GET.get('destino')
+        horario = request.GET.get('horario')
+        poltrona = request.GET.get('poltrona')
+    return render(request, 'confirmacaoPagamento.html', {'origem': origem, 'destino': destino, 'horario': horario, 'poltrona': poltrona,'passageiro': passageiro, 'cpf_passageiro': cpf_passageiro})
 
 def passagem(request):
-    return render(request, 'passagem.html')
+    if request.method == 'GET':
+        passageiro = request.GET.get('passageiro')
+        cpf_passageiro = request.GET.get('cpf_passageiro')
+        origem = request.GET.get('origem')
+        destino = request.GET.get('destino')
+        horario = request.GET.get('horario')
+        poltrona = request.GET.get('poltrona')
+    return render(request, 'passagem.html', {'origem': origem, 'destino': destino, 'horario': horario, 'poltrona': poltrona,'passageiro': passageiro, 'cpf_passageiro': cpf_passageiro})
