@@ -1,9 +1,5 @@
 from .models import *
 from django.views.decorators.csrf import csrf_protect
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 568796068db90ceb37ea1d87503be8e53304c3a8
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect, get_object_or_404
@@ -17,12 +13,7 @@ from django.http import HttpResponse
 from .tasks import reservar_poltrona_assincrona
 import asyncio
 from asgiref.sync import async_to_sync
-<<<<<<< HEAD
-=======
 from datetime import datetime
->>>>>>> horario-rotas
-=======
->>>>>>> 568796068db90ceb37ea1d87503be8e53304c3a8
 
 # Create your views here.
 @csrf_protect
@@ -174,11 +165,7 @@ def pesquisa(request):
             rotas =  routes.filter(origin=origem_id)
         else:
             rotas = routes.filter(origin_id=origem_id, destination_id=destino_id)
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 568796068db90ceb37ea1d87503be8e53304c3a8
-            
+          
     rotas_com_soma = []
     for rota in rotas:
         preco_rota = rota.preco if rota.preco else 0
@@ -186,7 +173,7 @@ def pesquisa(request):
         soma_total = preco_rota + preco_tipo_onibus
         rotas_com_soma.append({'rota': rota, 'soma_total': soma_total})
 
-        return render(request, 'pesquisa.html', {'rotas_com_soma': rotas_com_soma, 'locais': locais,'rotas':rotas, 'dinamico': dinamico,'nome_origem':rotas[0].origin.name, 'nome_destino':rotas[0].destination.name})
+        return render(request, 'pesquisa.html', {'rotas_com_soma': rotas_com_soma, 'locais': locais,'rotas':rotas, 'dinamico': dinamico,'nome_origem':rotas[0].origin.name, 'nome_destino':rotas[0].destination.name, 'nome_rota':rotas[0].name,'origem_id':origem_id,'destino_id':destino_id,'data':data})
 
 def pagamento(request):
     if request.method == 'POST':
@@ -198,13 +185,4 @@ def pagamento(request):
     return render(request, 'pagamento.html')
 
 def passagem(request):
-
-<<<<<<< HEAD
     return render(request, 'passagem.html')
-=======
-
-        return render(request, 'pesquisa.html', {'locais': locais,'rotas':rotas, 'dinamico': dinamico,'nome_rota':rotas[0].name,'origem_id':origem_id,'destino_id':destino_id,'data':data})
->>>>>>> horario-rotas
-=======
-    return render(request, 'passagem.html')
->>>>>>> 568796068db90ceb37ea1d87503be8e53304c3a8
