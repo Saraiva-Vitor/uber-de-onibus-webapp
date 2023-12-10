@@ -172,7 +172,7 @@ def pesquisa(request):
         soma_total = preco_rota + preco_tipo_onibus
         rotas_com_soma.append({'rota': rota, 'soma_total': soma_total})
 
-        return render(request, 'pesquisa.html', {'rotas_com_soma': rotas_com_soma, 'locais': locais,'rotas':rotas, 'dinamico': dinamico,'nome_origem':rotas[0].origin.name, 'nome_destino':rotas[0].destination.name})
+        return render(request, 'pesquisa.html', {'rotas_com_soma': rotas_com_soma, 'locais': locais,'rotas':rotas, 'dinamico': dinamico,'nome_origem':rotas[0].origin.name, 'nome_destino':rotas[0].destination.name,'data':data})
 
 def pagamento(request):
     if request.method == 'POST':
