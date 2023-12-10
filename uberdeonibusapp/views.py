@@ -184,5 +184,8 @@ def pagamento(request):
         parcelamento = request.POST.get('times')
     return render(request, 'pagamento.html')
 
+def confirmacao_pagamento(request):
+    return render(request, 'confirmacaoPagamento.html')
+
 def passagem(request):
     return render(request, 'passagem.html')
