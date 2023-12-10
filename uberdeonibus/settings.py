@@ -202,6 +202,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'uberdeonibus.urls'
 
 TEMPLATES = [
@@ -276,7 +277,7 @@ USE_TZ = True
 
 
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 STATICFILES_DIRS = [
     BASE_DIR / "components",
 ]
