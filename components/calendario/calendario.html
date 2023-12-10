@@ -32,7 +32,7 @@
     </div>
     <section class="calendar__days"></section>
   </div>
-  <div class="calendar-background "></div>
+  <div class="calendar-background " onclick="abrirDatePicker(false)"></div>
 </div>
 
   <script defer>
@@ -182,7 +182,9 @@
       case is('calendar__day'):
       //alert(curDate); // Show alert with selected date
       abrirDatePicker(false);
-      var textoData = curDate.toJSON().slice(0, 10);
+var textoData = curDate;
+textoData.setDate(trg.innerHTML);
+      textoData = textoData.toJSON().slice(0, 10);
       document.getElementsByName('data')[0].value = textoData;
       console.log(textoData);
       return selectDay(trg);
