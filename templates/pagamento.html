@@ -18,10 +18,15 @@
 </head>
 <body>
     {% component "header" %}
-    {% component "pagamento-pix" %}
-    {% component "pagamento-boleto" %}
-    {% component "pagamento-credito" %}
-    {% component "pagamento-transferencia" %}
+    {% if metodo_pagamento == '1' %}
+        {% component "pagamento-boleto" %}
+    {% elif metodo_pagamento == '2' %}
+        {% component "pagamento-credito" %}
+    {% elif metodo_pagamento == '3' %}
+        {% component "pagamento-pix" %}
+    {% elif metodo_pagamento == '4' %}
+        {% component "pagamento-transferencia" %}
+    {% endif %}
     {% component "footer" %}
 </body>
 </html>

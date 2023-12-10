@@ -3,11 +3,11 @@
     <div class="container" style="background-color: #171d25; box-shadow: 0px 4px 4px 2px rgb(0, 0, 0); border-radius: 10px;">
         <div style="align-items: center; justify-content: center; padding: 10px;">
             <h3 style="text-align: left; border-bottom: 3px solid #FF7F0A;">Transferência Bancária</h3>
-            <form action="{% url 'confirmacao_pagamento' %}">
+            <form action="{% url 'confirmacao_pagamento' %}" method="get">
                 {% csrf_token %}
                 <div class="row" style="margin-top: 10px;">
                     <div class="twelve columns">
-                        <img class="transferencia-img" src="{% static 'assets/transferencia-bancaria.png' %}" alt="" width="300">                    
+                        <img class="transferencia-img" src="{% static 'assets/transferencia-icons.png' %}" alt="" width="300">                    
                     </div>
                 </div>
                 <div class="row" style="margin-top: 20px;">
@@ -18,7 +18,7 @@
                         <input name="agencia" class="u-full-width" type="text" id="agencia" style="margin-bottom: 10px;" placeholder="Agência Bancária" required />
                     </div>
                 </div>
-                <div class="row" style="margin-top: 10px;">
+                <div class="row">
                     <div class="six columns">
                         <input name="cpf" class="u-full-width" type="text" id="cpf" style="margin-bottom: 10px;" placeholder="CPF " required/>
                     </div>
@@ -29,6 +29,13 @@
         </div>
     </div>
 </div>
+
+<input name="horario" type="hidden" value="{{ horario }}">
+<input name="poltrona" type="hidden" value="{{ poltrona }}">
+<input name="origem" type="hidden" value="{{ origem }}">
+<input name="destino" type="hidden" value="{{ destino }}">
+<input name="passageiro" type="hidden" value="{{ passageiro }}">
+<input name="cpf_passageiro" type="hidden" value="{{ cpf_passageiro }}">
 
 <div class="container" style="margin-top: 20px; margin-bottom: 20px; text-align: center;">
     <button type="submit" style="background-color: #171d25; color: #FFFFFF; border: none; border-radius: 8px; cursor: pointer; width: 220px;">Finalizar Compra</button>

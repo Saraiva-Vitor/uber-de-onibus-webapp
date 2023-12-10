@@ -19,8 +19,14 @@
         {% component "header" %}
         <div class="container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
             <h2 style="color: #171d25; border-bottom: 3px solid #FF7F0A; text-align: center;">Compra confirmada!</h2>
-            <form action="{% url 'passagem' %}">
+            <form action="{% url 'passagem' %}" method="get">
                 {% csrf_token %}
+                <input name="horario" type="hidden" value="{{ horario }}">
+                <input name="poltrona" type="hidden" value="{{ poltrona }}">
+                <input name="origem" type="hidden" value="{{ origem }}">
+                <input name="destino" type="hidden" value="{{ destino }}">
+                <input name="passageiro" type="hidden" value="{{ passageiro }}">
+                <input name="cpf_passageiro" type="hidden" value="{{ cpf_passageiro }}">
                 <input style="background-color: #171d25; color: white;" type="submit" value="Clique aqui para ver seu Ticket de Embarque">
             </form>
         </div>

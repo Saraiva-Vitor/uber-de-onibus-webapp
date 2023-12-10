@@ -176,16 +176,37 @@ def pesquisa(request):
         return render(request, 'pesquisa.html', {'rotas_com_soma': rotas_com_soma, 'locais': locais,'rotas':rotas, 'dinamico': dinamico,'nome_origem':rotas[0].origin.name, 'nome_destino':rotas[0].destination.name, 'nome_rota':rotas[0].name,'origem_id':origem_id,'destino_id':destino_id,'data':data})
 
 def pagamento(request):
-    if request.method == 'POST':
-        nome = request.POST.get('nome')
-        cpf = request.POST.get('cpf')
-        numero_cartao = request.POST.get('card_number')
-        cvc_cartao = request.POST.get('cvc')
-        parcelamento = request.POST.get('times')
-    return render(request, 'pagamento.html')
+    if request.method == 'GET':
+        passageiro = request.GET.get('passageiro')
+        cpf_passageiro = request.GET.get('cpf_passageiro')
+        nascimento_passageiro = request.GET.get('nascimento_passageiro')
+        email_passageiro = request.GET.get('email_passageiro')
+        tel_passageiro = request.GET.get('tel_passageiro')
+        metodo_pagamento = request.GET.get('pagamento')
+
+        origem = request.GET.get('origem')
+        destino = request.GET.get('destino')
+        horario = request.GET.get('horario')
+        poltrona = request.GET.get('poltrona')
+
+    return render(request, 'pagamento.html', {'origem': origem, 'destino': destino, 'horario': horario, 'poltrona': poltrona,'passageiro': passageiro, 'nascimento_passageiro': nascimento_passageiro, 'cpf_passageiro': cpf_passageiro, 'email_passageiro': email_passageiro, 'tel_passageiro': tel_passageiro, 'metodo_pagamento': metodo_pagamento})
 
 def confirmacao_pagamento(request):
-    return render(request, 'confirmacaoPagamento.html')
+    if request.method == 'GET':
+        passageiro = request.GET.get('passageiro')
+        cpf_passageiro = request.GET.get('cpf_passageiro')
+        origem = request.GET.get('origem')
+        destino = request.GET.get('destino')
+        horario = request.GET.get('horario')
+        poltrona = request.GET.get('poltrona')
+    return render(request, 'confirmacaoPagamento.html', {'origem': origem, 'destino': destino, 'horario': horario, 'poltrona': poltrona,'passageiro': passageiro, 'cpf_passageiro': cpf_passageiro})
 
 def passagem(request):
-    return render(request, 'passagem.html')
+    if request.method == 'GET':
+        passageiro = request.GET.get('passageiro')
+        cpf_passageiro = request.GET.get('cpf_passageiro')
+        origem = request.GET.get('origem')
+        destino = request.GET.get('destino')
+        horario = request.GET.get('horario')
+        poltrona = request.GET.get('poltrona')
+    return render(request, 'passagem.html', {'origem': origem, 'destino': destino, 'horario': horario, 'poltrona': poltrona,'passageiro': passageiro, 'cpf_passageiro': cpf_passageiro})
