@@ -1,5 +1,6 @@
 from .models import *
 from django.views.decorators.csrf import csrf_protect
+<<<<<<< HEAD
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect, get_object_or_404
@@ -13,6 +14,9 @@ from django.http import HttpResponse
 from .tasks import reservar_poltrona_assincrona
 import asyncio
 from asgiref.sync import async_to_sync
+=======
+from datetime import datetime
+>>>>>>> horario-rotas
 
 # Create your views here.
 @csrf_protect
@@ -164,6 +168,7 @@ def pesquisa(request):
             rotas =  routes.filter(origin=origem_id)
         else:
             rotas = routes.filter(origin_id=origem_id, destination_id=destino_id)
+<<<<<<< HEAD
             
     rotas_com_soma = []
     for rota in rotas:
@@ -186,3 +191,7 @@ def pagamento(request):
 def passagem(request):
 
     return render(request, 'passagem.html')
+=======
+
+        return render(request, 'pesquisa.html', {'locais': locais,'rotas':rotas, 'dinamico': dinamico,'nome_rota':rotas[0].name,'origem_id':origem_id,'destino_id':destino_id,'data':data})
+>>>>>>> horario-rotas
