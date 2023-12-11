@@ -1,0 +1,223 @@
+{% load static %}
+<div class="calendar-main calendario-fechado">
+  <div class="calendar">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="display: none;">
+      <symbol id="calendar-arrow" viewBox="0 0 448 512">
+        <path fill="currentColor" d="M4.465 366.475l7.07 7.071c4.686 4.686 12.284 4.686 16.971 0L224 178.053l195.494 195.493c4.686 4.686 12.284 4.686 16.971 0l7.07-7.071c4.686-4.686 4.686-12.284 0-16.97l-211.05-211.051c-4.686-4.686-12.284-4.686-16.971 0L4.465 349.505c-4.687 4.686-4.687 12.284 0 16.97z"></path>
+      </symbol>
+    </svg>
+    <div class="calendar__nav">
+      <span class="calendar__nav-item calendar__period">January 1970</span>
+      <span class="calendar__arrows">
+        <span class="calendar__nav-item calendar__arrow" data-type="prev" >
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30">
+            <use xlink:href="#calendar-arrow" href="#calendar-arrow"></use>
+          </svg>
+        </span>
+        <span class="calendar__nav-item calendar__arrow" data-type="next">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30">
+            <use xlink:href="#calendar-arrow" href="#calendar-arrow"></use>
+          </svg>
+        </span>
+      </span>
+    </div>
+    <div class="calendar__days-head">
+      <div class="calendar__weekday">D</div>
+      <div class="calendar__weekday">S</div>
+      <div class="calendar__weekday">T</div>
+      <div class="calendar__weekday">Q</div>
+      <div class="calendar__weekday">Q</div>
+      <div class="calendar__weekday">S</div>
+      <div class="calendar__weekday">S</div>
+    </div>
+    <section class="calendar__days"></section>
+  </div>
+  <div class="calendar-background " onclick="abrirDatePicker(false)"></div>
+</div>
+
+  <script defer>
+
+(function() {
+  'use strict';
+
+  var $ = document.querySelector.bind(document);
+  var $$ = document.querySelectorAll.bind(document);
+  var calendar = $('.calendar');
+  var period = $('.calendar__period');
+  var today = new Date();
+  var curDate = today;
+  var weeks = 'Sunday Monday Tuesday Wednesday Thursday Friday Saturday'.split(' ');
+  var months = 'Janeiro Fevereiro Março Abril Maio Junho Julho Agosto Setembro Outubro Novembro Dezembro'.split(' ');
+  var localeSupports = (function() {
+    try {
+      today.toLocaleTimeString('i');
+    } catch (e) {
+      return e.name === 'RangeError';
+    }
+
+    return false;
+  })();
+
+  function toArray(obj) {
+    var j = obj.length, arr = new Array(j);
+    while (j--) arr[j] = obj[j];
+    return arr;
+  }
+
+  function selectToday() {
+    var now = String(today.getDate());
+    var weekday = today.getDay();
+    var days = toArray($$('.calendar__day'));
+    var day = days.filter(function(day, i) {
+      return i % 7 === weekday && day.textContent === now;
+    })[0];
+
+    if (day) day.className += ' __today __active';
+  }
+
+  function selectDay(elem) {
+    var active = $('.calendar__day.__active');
+
+    if (active) active.classList.remove('__active');
+    if (elem !== active) elem.classList.add('__active');
+  }
+
+  function formatTime(date) {
+    function z(n) {
+      return (n < 10 ? '0' : '') + n;
+    }
+    var h = date.getHours();
+    var m = date.getMinutes();
+    var s = date.getSeconds();
+    return (h % 12 || 12) + ':' + z(m) + ':' + z(s) + ' ' + (h < 12 ? 'AM' : 'PM');
+  }
+
+  function createDay(day, outOfRange) {
+    var elem = document.createElement('div');
+    elem.textContent = day;
+    elem.className = 'calendar__day' + (!outOfRange ? '' : ' __gray');
+    return elem;
+  }
+
+  function setPeriod(date) {
+    period.textContent = getPeriodString(date);
+  }
+
+  function getPeriodString(date) {
+    return months[date.getMonth()] + ' ' + date.getFullYear();
+  }
+
+  function getDateString(date) {
+    var weekday = weeks[date.getDay()];
+    var month = months[date.getMonth()];
+    var day = date.getDate();
+    var year = date.getFullYear();
+    return weekday + ', ' + month + ' ' + day + ', ' + year;
+  }
+
+  function getDateWithDay(day, stamp) {
+    var date = new Date(+stamp || Date.now());
+    date.setDate(day);
+    return date;
+  }
+
+  function getPrevMonthDays(stamp) {
+    var date = getDateWithDay(0, stamp);
+    var weekday = (date.getDay() + 1) % 7;
+    var lastDay = date.getDate();
+    return toArray(Array(weekday)).map(function(x, i) {
+      return lastDay - i;
+    }).reverse();
+  }
+
+  function getCurrentMonthDays(stamp) {
+    var date = getDateWithDay(32, stamp);
+    var max = 32 - date.getDate();
+    return toArray(Array(max)).map(function(x, i) {
+      return i + 1;
+    });
+  }
+
+  function getNextMonthDays(stamp) {
+    var max = 42 - (getCurrentMonthDays(stamp).length + getPrevMonthDays(stamp).length);
+    return toArray(Array(max)).map(function(x, i) {
+      return i + 1;
+    });
+  }
+
+  function getCalendarParts(stamp) {
+    return [
+      getPrevMonthDays(stamp),
+      getCurrentMonthDays(stamp),
+      getNextMonthDays(stamp)
+    ];
+  }
+
+  function fill(stamp) {
+    var container = $('.calendar__days');
+    container.innerHTML = '';
+
+    getCalendarParts(stamp).forEach(function(days, i) {
+      days.forEach(function(day) {
+        container.appendChild(createDay(day, i !== 1));
+      });
+    });
+
+    if (getPeriodString(curDate) === getPeriodString(today)) selectToday();
+  }
+
+  function setMonth(type) {
+    var day = type === 'prev' ? 0 : 32;
+    curDate = getDateWithDay(day, curDate.getTime());
+    setPeriod(curDate);
+    fill(curDate.getTime());
+  }
+  calendar.addEventListener('click', function(e) {
+    var trg = e.target;
+    var is = (function(selector) {
+      return this.contains(selector);
+    }).bind(trg.classList);
+
+    switch (true) {
+      case is('calendar__day'):
+      //alert(curDate); // Show alert with selected date
+      abrirDatePicker(false);
+var textoData = curDate;
+textoData.setDate(trg.innerHTML);
+      textoData = textoData.toJSON().slice(0, 10);
+      document.getElementsByName('data')[0].value = textoData;
+      console.log(textoData);
+      return selectDay(trg);
+
+      case is('calendar__arrow'):
+        return setMonth(trg.getAttribute('data-type'));
+      case is('calendar__date'):
+        curDate = today;
+        setPeriod(today);
+        fill(today.getTime());
+    }
+
+  });
+
+  setPeriod(today);
+  fill(today.getTime());
+})();
+
+function abrirDatePicker( x=true){
+  var elementos = document.getElementsByClassName('calendar-main');
+
+// Verifica se encontrou elementos com a classe 'calendar-main'
+if (elementos.length > 0) {
+    if(x){
+    // Acessa o primeiro elemento encontrado (índice 0) ou itera sobre a lista de elementos se necessário
+    elementos[0].classList.remove('calendario-fechado');
+    elementos[0].classList.add('fadeOut');
+  }else{
+    elementos[0].classList.add('calendario-fechado');
+    elementos[0].classList.remove('fadeOut');
+}
+}
+
+}
+
+ </script>

@@ -15,7 +15,7 @@
                         <input name="nome" class="u-full-width" type="text" id="cardholder_name" style="padding: 8px; margin-bottom: 10px;" placeholder="Nome do Titular" required/>
                     </div>
                 </div>
-                <div class="row" style="margin-top: 10px;">
+                <div class="row">
                     <div class="six columns">
                         <input name="cpf" class="u-full-width" type="text" id="cpf" name="cpf" style="padding: 8px; margin-bottom: 10px;" placeholder="CPF" required/>
                     </div>
@@ -27,15 +27,15 @@
     </div>
 </div>
 
-<div class="container" style=" text-align: center; margin-top: 20px; margin-bottom: 20px;">    
+<div class="container" style="display: flex; align-items: center; justify-content: center; text-align: center; margin-top: 20px; margin-bottom: 20px;">    
     <div class="container" style="background-color: #171d25; box-shadow: 0px 4px 4px 2px rgb(0, 0, 0); border-radius: 10px;">
-        <div style="align-items: center; justify-content: center; padding: 10px; margin-left: 0%;">
+        <div style="align-items: center; justify-content: center; padding: 10px;">
             <div class="row">
-                <div class="six columns" style="margin-right: 30px;">
+                <div class="six columns">
                     <img class="boleto-img" src="{% static 'assets/boleto-completo.png' %}" alt="" width="300">                    
                 </div>
                 <div class="row">
-                    <div class="five columns" style="margin-top: 10px;">
+                    <div class="six columns" style="margin-top: 10px;">
                             <img src="{% static 'assets/Círculo1.png' %}" alt="" width="30">
                             <h6>Abra o app do seu banco e, na opção pagamentos, escaneie o código de barras</h6>
                             <img src="{% static 'assets/Círculo2.png' %}" alt="" width="30">

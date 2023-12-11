@@ -7,7 +7,10 @@ h6,
 span {
   color: white;
 }
-
+.seven{
+  background-color: black;
+  padding: 10px;
+}
 .banner-sub-title{
     font-weight: 100 !important;
     font-size: 24px;
@@ -21,22 +24,15 @@ span {
 }
 @media screen and (max-width: 767px) {
   .img-div {
- display: none;
+display: none;
   }
-.banner-right{
+
+.seven{
   width: 100%;
+  text-align: left !important;
+  background-color: transparent;
+  padding: 0px;
 }
-  .banner-right-topics{
-    display: flex;
-    flex-direction: column;
-    align-items: right;
-    justify-content: center;
-    margin-bottom: 30px;
-  }
-  .banner-right-topics img{
-    height: 20px;
-    align-items: right;
-  }
 }
 .banner-right-topics span{
 margin-right: 10px;
@@ -44,10 +40,4 @@ margin-right: 10px;
 
 .row-banner{
   padding: 50px 0px;
-}
-
-@media (min-width: 750px) {
-  .container-destination{
-      transform: translateY(-50%);
-  }
 }
