@@ -17,6 +17,10 @@ urlpatterns = [
     path("pagamento/", views.pagamento, name="pagamento"),
     path("confirmacao-pagamento/", views.confirmacao_pagamento, name="confirmacao_pagamento"),
     path("passagem/", views.passagem, name="passagem"),
+    path("400/", views.err400, name="400"),
+    path("403/", views.err403, name="403"),
+    path("404/", views.err404, name="404"),
+    path("500/", views.err500, name="500"),
 ]
 
 if settings.DEBUG:

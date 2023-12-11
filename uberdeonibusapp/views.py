@@ -17,6 +17,18 @@ from datetime import datetime
 
 # Create your views here.
 @csrf_protect
+def err400(request):
+    return render(request, 'errors/400.html')
+
+def err403(request):
+    return render(request, 'errors/403.html')
+
+def err404(request):
+    return render(request, 'errors/404.html')
+
+def err500(request):
+    return render(request, 'errors/500.html')
+
 def logout_view(request):
     logout(request)
     return redirect('home')
