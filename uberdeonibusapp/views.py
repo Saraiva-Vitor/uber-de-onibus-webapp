@@ -100,6 +100,8 @@ def checkout(request):
         precotipo = request.GET.get('precotipo')
         poltrona = request.GET.get('poltrona')
         poltrona_id = request.GET.get('poltrona_id')
+        rota_id = request.GET.get('rota_id')
+        horario_id = request.GET.get('horario_id')
 
         poltronas = Poltrona.objects.filter(id=poltrona_id)
         ids = poltronas.values_list('id', flat=True)
@@ -138,7 +140,7 @@ def checkout(request):
 
     mapa_html = mapa._repr_html_()
 
-    return render(request, 'checkout.html', {'mapa_html': mapa_html, 'poltrona': poltrona, 'preco': soma_total, 'origem': origem, 'origemlat': origemlat, 'origemlong': origemlong, 'destino': destino, 'destinolat': destinolat, 'destinolong': destinolong, 'horario': horario})
+    return render(request, 'checkout.html', {'mapa_html': mapa_html, 'poltrona_id': poltrona_id, 'rota_id': rota_id, 'horario_id': horario_id, 'poltrona': poltrona, 'preco': soma_total, 'origem': origem, 'origemlat': origemlat, 'origemlong': origemlong, 'destino': destino, 'destinolat': destinolat, 'destinolong': destinolong, 'horario': horario})
 
 @csrf_protect
 def home(request):
@@ -189,7 +191,11 @@ def pagamento(request):
         horario = request.GET.get('horario')
         poltrona = request.GET.get('poltrona')
 
-    return render(request, 'pagamento.html', {'origem': origem, 'destino': destino, 'horario': horario, 'poltrona': poltrona,'passageiro': passageiro, 'nascimento_passageiro': nascimento_passageiro, 'cpf_passageiro': cpf_passageiro, 'email_passageiro': email_passageiro, 'tel_passageiro': tel_passageiro, 'metodo_pagamento': metodo_pagamento})
+        poltrona_id = request.GET.get('poltrona_id')
+        rota_id = request.GET.get('rota_id')
+        horario_id = request.GET.get('horario_id')
+
+    return render(request, 'pagamento.html', {'poltrona_id': poltrona_id, 'rota_id': rota_id, 'horario_id': horario_id,'origem': origem, 'destino': destino, 'horario': horario, 'poltrona': poltrona,'passageiro': passageiro, 'nascimento_passageiro': nascimento_passageiro, 'cpf_passageiro': cpf_passageiro, 'email_passageiro': email_passageiro, 'tel_passageiro': tel_passageiro, 'metodo_pagamento': metodo_pagamento})
 
 def confirmacao_pagamento(request):
     if request.method == 'GET':
@@ -199,7 +205,10 @@ def confirmacao_pagamento(request):
         destino = request.GET.get('destino')
         horario = request.GET.get('horario')
         poltrona = request.GET.get('poltrona')
-    return render(request, 'confirmacaoPagamento.html', {'origem': origem, 'destino': destino, 'horario': horario, 'poltrona': poltrona,'passageiro': passageiro, 'cpf_passageiro': cpf_passageiro})
+        poltrona_id = request.GET.get('poltrona_id')
+        rota_id = request.GET.get('rota_id')
+        horario_id = request.GET.get('horario_id')
+    return render(request, 'confirmacaoPagamento.html', {'poltrona_id': poltrona_id, 'rota_id': rota_id, 'horario_id': horario_id,'origem': origem, 'destino': destino, 'horario': horario, 'poltrona': poltrona,'passageiro': passageiro, 'cpf_passageiro': cpf_passageiro})
 
 def passagem(request):
     if request.method == 'GET':
@@ -209,4 +218,12 @@ def passagem(request):
         destino = request.GET.get('destino')
         horario = request.GET.get('horario')
         poltrona = request.GET.get('poltrona')
+        poltrona_id = request.GET.get('poltrona_id')
+        rota_id = request.GET.get('rota_id')
+        horario_id = request.GET.get('horario_id')
+
+    assento = Poltrona.objects.filter(id=poltrona_id, route_id=rota_id, horario_id=horario_id)
+    assento.ocupada = True
+    print(assento)
+
     return render(request, 'passagem.html', {'origem': origem, 'destino': destino, 'horario': horario, 'poltrona': poltrona,'passageiro': passageiro, 'cpf_passageiro': cpf_passageiro})

@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    max-width: 100%;
     width: 100%;
     max-width: 60%;
     margin: 30px auto;
@@ -23,7 +24,6 @@
 }
 
 .container {
-    padding: 2px 16px;
 }
 
 @media screen and (max-width: 768px) {

@@ -39,6 +39,11 @@
                         <input name="cpf_passageiro" class="u-full-width" type="text" value="{{ user.last_name }}" readonly>
                     </div>
                 </div>
+                <input name="rota_id" type="hidden" value="{{ rota_id }}">
+                <input name="horario_id" type="hidden" value="{{ horario_id }}">
+                <input name="poltrona_id" type="hidden" value="{{ poltrona_id }}">
+
+
                 <input name="horario" type="hidden" value="{{ horario }}">
                 <input name="poltrona" type="hidden" value="{{ poltrona }}">
                 <input name="origem" type="hidden" value="{{ origem }}">
@@ -70,6 +75,10 @@
                         <input name="tel_passageiro" class="u-full-width" type="text" placeholder="Telefone/Celular" required>
                     </div>
                 </div>
+
+                <input name="rota_id" type="hidden" value="{{ rota_id }}">
+                <input name="horario_id" type="hidden" value="{{ horario_id }}">
+                <input name="poltrona_id" type="hidden" value="{{ poltrona_id }}">
 
                 <h5 style="color: #171d25;  border-bottom: 3px solid #FF7F0A;">Método de Pagamento:</h5>
                 <div class="row">

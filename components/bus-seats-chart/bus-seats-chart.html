@@ -9,11 +9,13 @@
                 <form action="{% url 'checkout' %}" style="margin-top: -25px;">
                     {% csrf_token %}
                     <div class="grid-item-seatchart">
-                            {% if poltrona.passageiro %}
+                            {% if poltrona.ocupada %}
                                 <span style="font-size: 20px; color: transparent; position: relative; left: 20px;">{{ poltrona.numero }}</span>
                                 <img src="{% static 'assets/seat-busy-icon.png' %}" alt="" height="600"/>
                                 <input name="horario" type="hidden" value='{{ horarios.hora }}'>
                                 <input name="origem" type="hidden" value='{{ rota.origin }}'>
+                                <input name="rota_id" type="hidden" value='{{ rota.id }}'>
+                                <input name="horario_id" type="hidden" value='{{ horarios.id }}'>
                                 <input name="poltrona_id" type="hidden" value='{{ poltrona.id }}'>
                                 <input name="precorota" type="hidden" value='{{ rota.preco }}'>
                                 <input name="precotipo" type="hidden" value='{{ rota.bus.tipo_onibus.preco }}'>
@@ -31,6 +33,8 @@
                                 <input name="precorota" type="hidden" value='{{ rota.preco }}'>
                                 <input name="precotipo" type="hidden" value='{{ rota.bus.tipo_onibus.preco }}'>
                                 <input name="origem" type="hidden" value='{{ rota.origin }}'>
+                                <input name="rota_id" type="hidden" value='{{ rota.id }}'>
+                                <input name="horario_id" type="hidden" value='{{ horarios.id }}'>
                                 <input name="poltrona_id" type="hidden" value='{{ poltrona.id }}'>
                                 <input name="origemlat" type="hidden" value='{{ rota.origin.latitude }}'>
                                 <input name="origemlong" type="hidden" value='{{ rota.origin.longitude }}'>
