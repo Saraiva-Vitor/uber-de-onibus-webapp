@@ -15,6 +15,7 @@ urlpatterns = [
     path("rota/<int:rota_id>/", views.detalhes_rota, name="detalhes_rota"),
     path("checkout/", views.checkout, name="checkout"),
     path("passagem/", views.ticket, name="ticket"),
+    path("email/", views.envia_passagem, name="email"),
 ]
 
 if settings.DEBUG:

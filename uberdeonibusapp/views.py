@@ -9,6 +9,9 @@ import folium
 from folium import plugins
 from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.core.mail import EmailMessage
 
 
 # Create your views here.
@@ -185,3 +188,32 @@ def pesquisa(request):
                 "nome_destino": rotas[0].destination.name,
             },
         )
+
+
+# Importe as bibliotecas necessárias
+
+
+# Sua view que renderiza a página
+def envia_passagem(request):
+    # Lógica para processar dados ou qualquer coisa que você precise fazer
+
+    # Renderize a página para HTML usando a função render_to_string
+    html_content = render_to_string("ticket.html", {"context_variable": value})
+
+    # Configuração do e-mail
+    subject = "Sua passagem"
+    from_email = "seu_email@gmail.com"
+    to_email = "destinatario@email.com"
+
+    # Crie um objeto EmailMessage com o HTML renderizado
+    email = EmailMessage(subject, html_content, from_email, [to_email])
+    email.content_subtype = "html"  # Configura o conteúdo como HTML
+
+    # Anexe arquivos ou imagens, se necessário
+    # email.attach_file('caminho/para/seu/arquivo.pdf')
+
+    # Envie o e-mail
+    email.send()
+
+    # Retorne a resposta da sua view, se necessário
+    return render(request, "ticket.html", {"context_variable": value})
