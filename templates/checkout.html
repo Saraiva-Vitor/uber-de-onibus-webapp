@@ -39,6 +39,27 @@
                         <input name="cpf_passageiro" class="u-full-width" type="text" value="{{ user.last_name }}" readonly>
                     </div>
                 </div>
+
+                <h5 style="color: #171d25;  border-bottom: 3px solid #FF7F0A;">Método de Pagamento:</h5>
+                <div class="row">
+                    <div class="three columns">
+                        <img src="{% static 'assets/boleto.png' %}" width="60px" style="border: 1px solid; border-radius: 5px;" alt="">
+                        <input name="pagamento" id="boleto" type="radio" value="1" checked>
+                    </div>
+                    <div class="three columns">
+                        <img src="{% static 'assets/card-icon.svg' %}" width="50px" alt="">
+                        <input name="pagamento" id="cartao" type="radio" value="2">
+                    </div>
+                    <div class="three columns">
+                        <img src="{% static 'assets/pix-bc-logo.png' %}" alt="">
+                        <input name="pagamento" id="pix" type="radio" value="3">
+                    </div>
+                    <div class="three columns">
+                        <img src="{% static 'assets/transferencia-logo.png' %}" width="90px" alt="">
+                        <input name="pagamento" id="transf" type="radio" value="4">
+                    </div>
+                </div>
+
                 <input name="rota_id" type="hidden" value="{{ rota_id }}">
                 <input name="horario_id" type="hidden" value="{{ horario_id }}">
                 <input name="poltrona_id" type="hidden" value="{{ poltrona_id }}">
