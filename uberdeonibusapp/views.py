@@ -236,6 +236,6 @@ def passagem(request):
 
     assento = Poltrona.objects.filter(id=poltrona_id, route_id=rota_id, horario_id=horario_id)
     assento.ocupada = True
-    print(assento)
+    assento.nome_passageiro = passageiro
 
     return render(request, 'passagem.html', {'origem': origem, 'destino': destino, 'horario': horario, 'poltrona': poltrona,'passageiro': passageiro, 'cpf_passageiro': cpf_passageiro})

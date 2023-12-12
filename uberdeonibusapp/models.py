@@ -232,6 +232,7 @@ class Poltrona(models.Model):
     route = models.ForeignKey(BusRoute, on_delete=models.CASCADE, null=True, blank=True)
     horario = models.ForeignKey(BusSchedule, on_delete=models.CASCADE, null=True, blank=True)
     numero = models.IntegerField()
+    nome_passageiro = models.CharField(max_length=100, null=True, blank=True)
     passageiro = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True)
     ocupada = models.BooleanField(("Ocupada"), null=True, blank=True, default=False)
 
